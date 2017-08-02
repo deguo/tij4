@@ -1,10 +1,11 @@
-package c02object;
+package ch02object;
 
 import java.util.*;
 
 /**
  * The first Thinking in Java example program. Displays a string and today's
- * date.
+ * date. <br>
+ * Output: (55% match) Hello, it's: Wed Oct 05 14:39:36 MDT 2005
  * 
  * @author Bruce Eckel
  * @author www.MindView.net

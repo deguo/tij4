@@ -1,4 +1,4 @@
-package c02object;
+package ch02object;
 
 /**
  * You can <em>even</em> insert a list:

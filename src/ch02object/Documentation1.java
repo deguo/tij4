@@ -1,4 +1,4 @@
-package c02object;
+package ch02object;
 
 /** A class comment */
 public class Documentation1 {

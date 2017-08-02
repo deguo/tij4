@@ -1,4 +1,4 @@
-package c02object;
+package ch02object;
 
 public class ShowProperties {
 	public static void main(String[] args) {

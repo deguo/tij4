@@ -40,10 +40,14 @@
   </component>
   <component name="EclipseCodeFormatter">
     <option name="defaultSettings" value="true" />
+    <option name="formatter" value="ECLIPSE" />
     <option name="id" value="1483359911052" />
     <option name="name" value="default" />
     <option name="pathToConfigFileJava" value="$USER_HOME$/.IntelliJIdea2016.1/code-style.xml" />
     <option name="selectedJavaProfile" value="code-style.xml" />
+  </component>
+  <component name="EntryPointsManager">
+    <entry_points version="2.0" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">

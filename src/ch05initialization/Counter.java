@@ -1,0 +1,10 @@
+package ch05initialization;
+
+public class Counter {
+	int i;
+
+	Counter() {
+		i = 7;
+	}
+	// ...
+}

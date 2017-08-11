@@ -1,0 +1,61 @@
+<?xml version="1.0" ?>
+
+<project basedir="." default="run" name="ch02object">
+
+    <description>描述</description>
+
+    <condition property="version1.8">
+        <equals arg1="1.8" arg2="${ant.java.version}"/>
+    </condition>
+
+    <target depends="" description="Build all classes in this directory" name="build">
+        <fail message="J2SE8 required" unless="version1.8"/>
+        <echo message="Building 'object'"/>
+        <javac
+                classpath="${basedir}/.."
+                debug="true"
+                destdir="${basedir}/../../out"
+                srcdir="${basedir}">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+        <echo message="Build 'object' succeeded"/>
+    </target>
+
+    <target name="HelloDate">
+        <java
+                classname="ch02object.HelloDate"
+                classpath="${java.class.path};${basedir};${basedir}/../../out"
+                dir="../../out"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ShowProperties">
+        <java
+                classname="ch02object.ShowProperties"
+                classpath="${java.class.path};${basedir};${basedir}/../../out"
+                dir="../../out"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target depends="build" description="Compile and run" name="run">
+        <touch file="failures"/>
+        <antcall target="HelloDate"/>
+        <antcall target="ShowProperties"/>
+        <delete file="failures"/>
+    </target>
+
+    <target description="delete all byproducts" name="clean">
+        <delete>
+            <fileset dir="${basedir}/../../out/ch02object" includes="**/*.class"/>
+            <fileset dir="${basedir}/../../out/ch02object" includes="**/*Output.txt"/>
+            <fileset dir="${basedir}/../../out/ch02object" includes="**/log.txt"/>
+            <fileset dir="${basedir}/../../out" includes="failures"/>
+            <dirset dir="${basedir}/../../out/ch02object"/>
+        </delete>
+        <echo message="clean successful"/>
+    </target>
+
+</project>

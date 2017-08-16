@@ -11,7 +11,7 @@ package ch02object.exercise;
  *
  * Model of a single arboreal unit.
  *
- *Output:
+ * Output:
  * Creating new Tree that is 0 feet tall
  * Tree is 0 feet tall
  * overloaded method: Tree is 0 feet tall

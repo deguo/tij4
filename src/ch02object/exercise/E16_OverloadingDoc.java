@@ -8,16 +8,28 @@ package ch02object.exercise;
  * Javadoc documentation to the Overloading.java example.
  * Extract it into an HTML file using Javadoc
  * and view it with your Web browser.
+ *
+ * Model of a single arboreal unit.
+ *
+ *Output:
+ * Creating new Tree that is 0 feet tall
+ * Tree is 0 feet tall
+ * overloaded method: Tree is 0 feet tall
+ * Creating new Tree that is 1 feet tall
+ * Tree is 1 feet tall
+ * overloaded method: Tree is 1 feet tall
+ * Creating new Tree that is 2 feet tall
+ * Tree is 2 feet tall
+ * overloaded method: Tree is 2 feet tall
+ * Creating new Tree that is 3 feet tall
+ * Tree is 3 feet tall
+ * overloaded method: Tree is 3 feet tall
+ * Creating new Tree that is 4 feet tall
+ * Tree is 4 feet tall
+ * overloaded method: Tree is 4 feet tall
+ * Planting a seedling
  * </pre>
- * 
- * Model of a single arboreal unit.<br>
- * Output: Creating new Tree that is 0 feet tall Tree is 0 feet tall overloaded
- * method: Tree is 0 feet tall Creating new Tree that is 1 feet tall Tree is 1
- * feet tall overloaded method: Tree is 1 feet tall Creating new Tree that is 2
- * feet tall Tree is 2 feet tall overloaded method: Tree is 2 feet tall Creating
- * new Tree that is 3 feet tall Tree is 3 feet tall overloaded method: Tree is 3
- * feet tall Creating new Tree that is 4 feet tall Tree is 4 feet tall
- * overloaded method: Tree is 4 feet tall Planting a seedling
+ *
  */
 class Tree {
 	/** Current vertical aspect to the tip. */

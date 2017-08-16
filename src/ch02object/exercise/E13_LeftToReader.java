@@ -4,8 +4,8 @@ package ch02object.exercise;
  * Exercise 13
  * 
  * <pre>
- * Run Documentation1.java, Documentation2.java,
- * and Documentation3.java through Javadoc. Verify
+ * Run D03_Documentation1.java, D04_Documentation2.java,
+ * and D05_Documentation3.java through Javadoc. Verify
  * the resulting documentation with your Web
  * browser.
  * </pre>

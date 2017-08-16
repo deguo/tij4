@@ -8,9 +8,12 @@ package ch02object.exercise;
  * matter how many objects you create of a
  * particular class, there is only one instance
  * of a particular static field in that class.
+ *
+ * Output:
+ * 47 == 47
+ * 48 == 48
  * </pre>
  * 
- * Output: 47 == 47 48 == 48
  */
 public class E08_StaticTest {
 	static int i = 47;

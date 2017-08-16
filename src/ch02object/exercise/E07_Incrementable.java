@@ -1,9 +1,5 @@
 package ch02object.exercise;
 
-class StaticTest {
-	static int i = 47;
-}
-
 /**
  * Exercise 7
  *
@@ -12,6 +8,10 @@ class StaticTest {
  * working program.
  * </pre>
  */
+class StaticTest {
+	static int i = 47;
+}
+
 public class E07_Incrementable {
 	static void increment() {
 		StaticTest.i++;

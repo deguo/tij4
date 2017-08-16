@@ -1,6 +1,6 @@
 package ch02object;
 
-public class ShowProperties {
+public class D02_ShowProperties {
 	public static void main(String[] args) {
 		// 输出所有系统属性
 		System.getProperties().list(System.out);

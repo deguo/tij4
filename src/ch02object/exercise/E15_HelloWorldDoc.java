@@ -7,11 +7,14 @@ package ch02object.exercise;
  * Add comment documentation to the program in Exercise 2.
  * Extract it into an HTML file using Javadoc
  * and view it with your Web browser.
- * </pre>
- * 
- * Output: Hello, world!<br>
+ *
  * A first example from <i>sTIJ4</i>. Demonstrates the basic class structure and
  * the creation of a <code>main()</code> method.
+ *
+ * Output:
+ * Hello, world!
+ * </pre>
+ *
  */
 
 public class E15_HelloWorldDoc {

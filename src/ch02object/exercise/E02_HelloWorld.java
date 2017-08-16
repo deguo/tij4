@@ -4,7 +4,7 @@ package ch02object.exercise;
  * Exercise 2
  * 
  * <pre>
- * Follow the HelloDate.java example in this
+ * Follow the D01_HelloDate.java example in this
  * chapter to create a "hello, world" program that
  * simply displays that statement. You need only a
  * single method in your class (the "main" one that
@@ -15,9 +15,11 @@ package ch02object.exercise;
  * java. If you are using a different development
  * environment than the JDK, learn how to compile
  * and run programs in that environment.
+ *
+ * Output:
+ * Hello, world!
  * </pre>
  * 
- * Output: Hello, world!
  */
 public class E02_HelloWorld {
 	public static void main(String[] args) {

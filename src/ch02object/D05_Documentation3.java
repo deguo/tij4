@@ -8,5 +8,5 @@ package ch02object;
  * <li>Item three
  * </ol>
  */
-public class Documentation3 {
+public class D05_Documentation3 {
 }

@@ -16,6 +16,7 @@
                 debug="true"
                 destdir="${basedir}/../../out/production/tij4"
                 srcdir="${basedir}">
+            <exclude name="exercise/*.java"/>
             <compilerarg value="-Xmaxerrs"/>
             <compilerarg value="10"/>
         </javac>
@@ -24,7 +25,7 @@
 
     <target name="HelloDate">
         <java
-                classname="ch02object.HelloDate"
+                classname="ch02object.D01_HelloDate"
                 classpath="${java.class.path};${basedir};${basedir}/../../out/production/tij4"
                 dir="../../out/production/tij4"
                 failonerror="true"
@@ -33,7 +34,7 @@
 
     <target name="ShowProperties">
         <java
-                classname="ch02object.ShowProperties"
+                classname="ch02object.D02_ShowProperties"
                 classpath="${java.class.path};${basedir};${basedir}/../../out/production/tij4"
                 dir="../../out/production/tij4"
                 failonerror="true"

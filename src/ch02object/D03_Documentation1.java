@@ -1,7 +1,7 @@
 package ch02object;
 
 /** A class comment */
-public class Documentation1 {
+public class D03_Documentation1 {
 	/** A field comment */
 	public int i;
 

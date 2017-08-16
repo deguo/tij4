@@ -8,9 +8,11 @@ package ch02object.exercise;
  * that are not initialized. Print their values
  * to verify that Java performs default
  * initialization.
- * </pre>
  * 
- * Output: i = 0 c = [ ]
+ * Output:
+ * i = 0
+ * c = [ ]
+ * </pre>
  * 
  */
 public class E01_DefaultInitialization {

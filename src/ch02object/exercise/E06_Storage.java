@@ -7,9 +7,11 @@ package ch02object.exercise;
  * Write a program that includes and calls the
  * storage() method defined as a code fragment in
  * this chapter.
+ * 
+ * Output:
+ * storage(s) = 26
  * </pre>
  * 
- * Output: storage(s) = 26
  */
 public class E06_Storage {
 	String s = "Hello, World!";

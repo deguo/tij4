@@ -5,13 +5,18 @@ package ch02object.exercise;
  * 
  * <pre>
  * {Args: A B C}
+ * 
  * Write a program that prints three arguments
  * taken from the command line.
  * You'll need to index into the command-line
  * array of Strings.
- * </pre>
  * 
- * Output: A B C
+ * Output:
+ * A
+ * B
+ * C
+ * </pre>
+ *
  */
 public class E10_ShowArgs {
 	public static void main(String[] args) {

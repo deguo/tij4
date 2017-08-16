@@ -5,7 +5,7 @@ package ch02object.exercise;
  * 
  * <pre>
  * Find the code for the second version of
- * HelloDate.java, the simple comment-
+ * D01_HelloDate.java, the simple comment-
  * documentation example. Execute Javadoc on the
  * file and view the results with your Web browser.
  * </pre>

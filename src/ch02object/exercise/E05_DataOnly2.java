@@ -7,9 +7,13 @@ package ch02object.exercise;
  * Modify Exercise 4 so the values
  * of the data in DataOnly are assigned to and
  * printed in main().
+ * 
+ * Output:
+ * d.i = 47
+ * d.d = 1.1
+ * d.b = false
  * </pre>
  * 
- * Output: d.i = 47 d.d = 1.1 d.b = false
  */
 public class E05_DataOnly2 {
 	public static void main(String[] args) {

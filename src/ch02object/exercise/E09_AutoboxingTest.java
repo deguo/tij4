@@ -7,10 +7,18 @@ package ch02object.exercise;
  * Write a program to demonstrate that
  * autoboxing works for all the primitive types
  * and their wrappers.
+ *
+ * Output:
+ * byte = 1
+ * short = 1
+ * int = 1
+ * long = 1
+ * boolean = true
+ * char = x
+ * float = 1.0
+ * double = 1.0
  * </pre>
- * 
- * Output: byte = 1 short = 1 int = 1 long = 1 boolean = true char = x float =
- * 1.0 double = 1.0
+ *
  */
 public class E09_AutoboxingTest {
 	public static void main(String[] args) {

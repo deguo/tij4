@@ -5,5 +5,5 @@ package ch02object;
  * System.out.println(new Date());
  * </pre>
  */
-public class Documentation2 {
+public class D04_Documentation2 {
 }

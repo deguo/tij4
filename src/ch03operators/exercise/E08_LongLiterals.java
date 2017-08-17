@@ -1,6 +1,6 @@
 package ch03operators.exercise;
 
-import static net.mindview.util.Print.*;
+import static commons.util.Print.*;
 
 /**
  * Exercise 8
@@ -9,6 +9,7 @@ import static net.mindview.util.Print.*;
  * Show that hex and octal notations work with long
  * values. Use Long.toBinaryString() to display
  * the results.
+ * 
  * Output:
  * l1: 101111
  * l2: 101111

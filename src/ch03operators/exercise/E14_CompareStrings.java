@@ -9,6 +9,7 @@ package ch03operators.exercise;
  * results. Perform the equals() test for the == and
  * !=. In main(), call your method with different
  * String objects.
+ * 
  * Output:
  * lval: Hello rval: Hello
  * lval == rval: true

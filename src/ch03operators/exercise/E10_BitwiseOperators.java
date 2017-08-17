@@ -1,6 +1,6 @@
 package ch03operators.exercise;
 
-import static net.mindview.util.Print.*;
+import static commons.util.Print.*;
 
 /**
  * Exercise 10
@@ -15,6 +15,7 @@ import static net.mindview.util.Print.*;
  * these two values every way possible using the
  * bitwise operators. Display the results using
  * Integer.toBinaryString().
+ * 
  * Output:
  * i1 = 10101010101010101010101010101010
  * i2 = 1010101010101010101010101010101

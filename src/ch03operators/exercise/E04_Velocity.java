@@ -5,8 +5,10 @@ package ch03operators.exercise;
  * 
  * <pre>
  * {Args: 30.5 3.2}
+ * 
  * Write a program that calculates velocity
  * using a constant distance and a constant time.
+ * 
  * Output:
  * Velocity = 9.53125 m/s
  * </pre>

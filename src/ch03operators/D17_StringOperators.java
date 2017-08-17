@@ -1,6 +1,6 @@
 package ch03operators;
 
-import static net.mindview.util.Print.*;
+import static commons.util.Print.*;
 
 /**
  * <pre>
@@ -11,7 +11,7 @@ import static net.mindview.util.Print.*;
  * 0
  * </pre>
  */
-public class StringOperators {
+public class D17_StringOperators {
 	public static void main(String[] args) {
 		int x = 0, y = 1, z = 2;
 		String s = "x, y, z ";

@@ -1,7 +1,7 @@
 package ch03operators.exercise;
 
 import java.util.Date;
-import static net.mindview.util.Print.*;
+import static commons.util.Print.*;
 
 /**
  * Exercise 1
@@ -9,6 +9,7 @@ import static net.mindview.util.Print.*;
  * <pre>
  * Write a program that uses the "short" and
  * normal form of print statement.
+ * 
  * Output: (Sample)
  * Hello, it's: Wed Mar 30 17:39:26 CEST 2005
  * Hello, it's: Wed Mar 30 17:39:26 CEST 2005

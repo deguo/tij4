@@ -7,6 +7,7 @@ import java.util.Random;
  * 
  * <pre>
  * Write a program that simulates coin-flipping.
+ * 
  * Output:
  * OUTCOME: HEAD
  * </pre>

@@ -1,6 +1,6 @@
 package ch03operators.exercise;
 
-import static net.mindview.util.Print.*;
+import static commons.util.Print.*;
 
 /**
  * Exercise 3
@@ -8,6 +8,7 @@ import static net.mindview.util.Print.*;
  * <pre>
  * Create a class containing a float and use it
  * to demonstrate aliasing during method calls.
+ * 
  * Output:
  * 1: x.f: 2.0
  * 2: x.f: 1.0

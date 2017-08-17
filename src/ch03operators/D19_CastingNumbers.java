@@ -1,6 +1,6 @@
 package ch03operators;
 
-import static net.mindview.util.Print.*;
+import static commons.util.Print.*;
 
 /**
  * What happens when you cast a float or double to an integral value?
@@ -13,7 +13,7 @@ import static net.mindview.util.Print.*;
  * (int)fbelow: 0
  * </pre>
  */
-public class CastingNumbers {
+public class D19_CastingNumbers {
 	public static void main(String[] args) {
 		double above = 0.7, below = 0.4;
 		float fabove = 0.7f, fbelow = 0.4f;

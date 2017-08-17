@@ -1,5 +1,6 @@
 package ch03operators.exercise;
-        import static net.mindview.util.Print.*;
+
+import static commons.util.Print.*;
 
 /**
  * Exercise 13
@@ -8,6 +9,7 @@ package ch03operators.exercise;
  * Write a method to display char values in
  * binary form. Demonstrate it using several
  * different characters.
+ * 
  * Output:
  * A: 1000001
  * !: 100001
@@ -16,10 +18,10 @@ package ch03operators.exercise;
  * </pre>
  */
 public class E13_BinaryChar {
-    public static void main(String[] args) {
-        print("A: " + Integer.toBinaryString('A'));
-        print("!: " + Integer.toBinaryString('!'));
-        print("x: " + Integer.toBinaryString('x'));
-        print("7: " + Integer.toBinaryString('7'));
-    }
+	public static void main(String[] args) {
+		print("A: " + Integer.toBinaryString('A'));
+		print("!: " + Integer.toBinaryString('!'));
+		print("x: " + Integer.toBinaryString('x'));
+		print("7: " + Integer.toBinaryString('7'));
+	}
 }

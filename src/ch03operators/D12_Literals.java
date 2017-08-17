@@ -1,6 +1,6 @@
 package ch03operators;
 
-import static net.mindview.util.Print.*;
+import static commons.util.Print.*;
 
 /**
  * <pre>
@@ -13,7 +13,7 @@ import static net.mindview.util.Print.*;
  * s: 111111111111111
  * </pre>
  */
-public class Literals {
+public class D12_Literals {
 	public static void main(String[] args) {
 		int i1 = 0x2f; // Hexadecimal (lowercase)
 		print("i1: " + Integer.toBinaryString(i1));

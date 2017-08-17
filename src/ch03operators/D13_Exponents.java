@@ -10,7 +10,7 @@ package ch03operators;
  * </pre>
  */
 
-public class Exponents {
+public class D13_Exponents {
 	public static void main(String[] args) {
 		// Uppercase and lowercase 'e' are the same:
 		float expFloat = 1.39e-43f;

@@ -2,11 +2,11 @@ package ch03operators;
 
 /**
  * <pre>
- *  Output:
+ * Output:
  * a = 5 b = 1
  * </pre>
  */
-public class Precedence {
+public class D02_Precedence {
 	public static void main(String[] args) {
 		int x = 1, y = 2, z = 3;
 		int a = x + y - 2 / 2 + z; // (1)

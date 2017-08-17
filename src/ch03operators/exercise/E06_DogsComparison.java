@@ -1,6 +1,6 @@
 package ch03operators.exercise;
 
-import static net.mindview.util.Print.*;
+import static commons.util.Print.*;
 
 /**
  * Exercise 6
@@ -9,6 +9,7 @@ import static net.mindview.util.Print.*;
  * Following Exercise 5 assign, a new Dog
  * reference to spot's object. Test for comparison
  * using == and equals() for all references.
+ * 
  * Output:
  * Comparing dog1 and dog2 objects...
  * == on top references: false

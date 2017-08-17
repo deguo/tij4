@@ -1,6 +1,6 @@
 package ch03operators.exercise;
 
-import static net.mindview.util.Print.*;
+import static commons.util.Print.*;
 
 /**
  * Exercise 11
@@ -12,6 +12,7 @@ import static net.mindview.util.Print.*;
  * right-shift operator to right shift your
  * number through all its binary positions.
  * Display each result using Integer.toBinaryString().
+ * 
  * Output:
  * 10000000000000000000000000000000
  * 11000000000000000000000000000000

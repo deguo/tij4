@@ -1,6 +1,6 @@
 package ch03operators;
 
-import static net.mindview.util.Print.*;
+import static commons.util.Print.*;
 
 /**
  * <pre>
@@ -11,7 +11,7 @@ import static net.mindview.util.Print.*;
  * 100
  * </pre>
  */
-public class TernaryIfElse {
+public class D16_TernaryIfElse {
 	static int ternary(int i) {
 		return i < 10 ? i * 100 : i * 10;
 	}

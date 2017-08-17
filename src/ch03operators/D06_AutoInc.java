@@ -1,6 +1,6 @@
 package ch03operators;
 
-import static net.mindview.util.Print.*;
+import static commons.util.Print.*;
 
 /**
  * Demonstrates the ++ and -- operators.
@@ -17,7 +17,7 @@ import static net.mindview.util.Print.*;
  * </pre>
  */
 
-public class AutoInc {
+public class D06_AutoInc {
 	public static void main(String[] args) {
 		int i = 1;
 		print("i : " + i);

@@ -12,7 +12,7 @@ class Value {
 	int i;
 }
 
-public class EqualsMethod2 {
+public class D09_EqualsMethod2 {
 	public static void main(String[] args) {
 		Value v1 = new Value();
 		Value v2 = new Value();

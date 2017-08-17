@@ -1,6 +1,6 @@
 package ch03operators.exercise;
 
-import static net.mindview.util.Print.*;
+import static commons.util.Print.*;
 
 /**
  * Exercise 9
@@ -8,6 +8,7 @@ import static net.mindview.util.Print.*;
  * <pre>
  * Display the largest and smallest numbers for
  * both float and double exponential notation.
+ * 
  * Output:
  * Float MIN: 1.4E-45
  * Float MAX: 3.4028235E38
@@ -21,6 +22,6 @@ public class E09_MinMaxExponents {
 		print("Float MAX: " + Float.MAX_VALUE);
 		print("Double MIN: " + Double.MIN_VALUE);
 		print("Double MAX: " + Double.MAX_VALUE);
-		float f=-10.6F;
+		float f = -10.6F;
 	}
 }

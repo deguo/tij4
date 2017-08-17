@@ -1,7 +1,7 @@
 package ch03operators;
 
 import java.util.*;
-import static net.mindview.util.Print.*;
+import static commons.util.Print.*;
 
 /**
  * Relational and logical operators.
@@ -20,7 +20,7 @@ import static net.mindview.util.Print.*;
  * (i < 10) || (j < 10) is false
  * </pre>
  */
-public class Bool {
+public class D10_Bool {
 	public static void main(String[] args) {
 		Random rand = new Random(47);
 		int i = rand.nextInt(100);

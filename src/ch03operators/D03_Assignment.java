@@ -1,9 +1,9 @@
 package ch03operators;
 
-import static net.mindview.util.Print.*;
+import static commons.util.Print.*;
 
 /**
- * Assignment with objects is a bit tricky.
+ * D03_Assignment with objects is a bit tricky.
  * 
  * <pre>
  * Output:
@@ -16,7 +16,7 @@ class Tank {
 	int level;
 }
 
-public class Assignment {
+public class D03_Assignment {
 	public static void main(String[] args) {
 		Tank t1 = new Tank();
 		Tank t2 = new Tank();

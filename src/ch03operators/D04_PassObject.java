@@ -1,6 +1,6 @@
 package ch03operators;
 
-import static net.mindview.util.Print.*;
+import static commons.util.Print.*;
 
 /**
  * Passing objects to methods may not be what you're used to.
@@ -15,7 +15,7 @@ class Letter {
 	char c;
 }
 
-public class PassObject {
+public class D04_PassObject {
 	static void f(Letter y) {
 		y.c = 'z';
 	}

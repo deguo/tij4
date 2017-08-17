@@ -1,7 +1,7 @@
 package ch03operators;
 
 import java.util.*;
-import static net.mindview.util.Print.*;
+import static commons.util.Print.*;
 
 /**
  * Demonstrates the mathematical operators.
@@ -29,7 +29,7 @@ import static net.mindview.util.Print.*;
  * </pre>
  */
 
-public class MathOps {
+public class D05_MathOps {
 	public static void main(String[] args) {
 		// Create a seeded random number generator:
 		Random rand = new Random(47);

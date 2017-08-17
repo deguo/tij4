@@ -9,6 +9,7 @@ package ch03operators.exercise;
  * "spot" who says, "Ruff!", and "scruffy" who
  * says, "Wurf!". Then display their names and
  * what they say.
+ * 
  * Output:
  * spot says ruff!
  * scruffy says wurf!

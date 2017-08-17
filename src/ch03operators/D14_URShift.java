@@ -1,6 +1,6 @@
 package ch03operators;
 
-import static net.mindview.util.Print.*;
+import static commons.util.Print.*;
 
 /**
  * Test of unsigned right shift.
@@ -20,7 +20,7 @@ import static net.mindview.util.Print.*;
  * </pre>
  */
 
-public class URShift {
+public class D14_URShift {
 	public static void main(String[] args) {
 		int i = -1;
 		print(Integer.toBinaryString(i));

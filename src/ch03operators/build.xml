@@ -254,6 +254,7 @@
             <fileset dir="${basedir}/../../out/production/tij4/ch03operators" includes="**/*Output.txt"/>
             <fileset dir="${basedir}/../../out/production/tij4/ch03operators" includes="**/log.txt"/>
             <fileset dir="${basedir}/../../out/production/tij4/ch03operators" includes="failures"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch03operators" includes="build.xml"/>
             <dirset dir="${basedir}/../../out/production/tij4/ch03operators"/>
         </delete>
         <echo message="clean successful"/>

@@ -1,0 +1,351 @@
+<?xml version="1.0" ?>
+
+<project basedir="." default="run" name="ch05initialization">
+
+    <condition property="version1.8">
+        <equals arg1="1.8" arg2="${ant.java.version}"/>
+    </condition>
+
+    <target name="commons_util">
+        <javac
+                destdir="${basedir}/../../out/production/tij4"
+                srcdir="${basedir}/../commons/util">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+    </target>
+
+    <target depends="commons_util" description="Build all classes in this directory" name="build">
+        <fail message="J2SE8 required" unless="version1.8"/>
+        <echo message="Building 'initialization'"/>
+        <javac
+                debug="true"
+                excludes="OverloadingVarargs2.java"
+                destdir="${basedir}/../../out/production/tij4"
+                srcdir="${basedir}">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+        <echo message="Build 'initialization' succeeded"/>
+    </target>
+
+    <target name="ArrayClassObj">
+        <java
+                classname="ch05initialization.D29_ArrayClassObj"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ArrayInit">
+        <java
+                classname="ch05initialization.D30_ArrayInit"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ArrayNew">
+        <java
+                classname="ch05initialization.D28_ArrayNew"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ArraysOfPrimitives">
+        <java
+                classname="ch05initialization.D27_ArraysOfPrimitives"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="AutoboxingVarargs">
+        <java
+                classname="ch05initialization.D36_AutoboxingVarargs"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="BananaPeel">
+        <java
+                classname="ch05initialization.D09_BananaPeel"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Burrito">
+        <java
+                classname="ch05initialization.D43_Burrito"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="DefaultConstructor">
+        <java
+                classname="ch05initialization.D07_DefaultConstructor"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Demotion">
+        <java
+                classname="ch05initialization.D06_Demotion"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="DynamicArray">
+        <java
+                classname="ch05initialization.D31_DynamicArray"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="EnumOrder">
+        <java
+                classname="ch05initialization.D42_EnumOrder"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ExplicitStatic">
+        <java
+                classname="ch05initialization.D25_ExplicitStatic"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Flower">
+        <java
+                classname="ch05initialization.D13_Flower"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="InitialValues">
+        <java
+                classname="ch05initialization.D15_InitialValues"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Leaf">
+        <java
+                classname="ch05initialization.D11_Leaf"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Mugs">
+        <java
+                classname="ch05initialization.D26_Mugs"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="NewVarArgs">
+        <java
+                classname="ch05initialization.D33_NewVarArgs"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="NoSynthesis">
+        <java
+                classname="ch05initialization.D08_NoSynthesis"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="OptionalTrailingArguments">
+        <java
+                classname="ch05initialization.D34_OptionalTrailingArguments"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="OrderOfInitialization">
+        <java
+                classname="ch05initialization.D22_OrderOfInitialization"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Overloading">
+        <java
+                classname="ch05initialization.D03_Overloading"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="OverloadingOrder">
+        <java
+                classname="ch05initialization.D04_OverloadingOrder"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="OverloadingVarargs">
+        <java
+                classname="ch05initialization.D37_OverloadingVarargs"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="OverloadingVarargs3">
+        <java
+                classname="ch05initialization.D39_OverloadingVarargs3"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="PassingThis">
+        <java
+                classname="ch05initialization.D12_PassingThis"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="PrimitiveOverloading">
+        <java
+                classname="ch05initialization.D05_PrimitiveOverloading"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="SimpleConstructor">
+        <java
+                classname="ch05initialization.D01_SimpleConstructor"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="SimpleConstructor2">
+        <java
+                classname="ch05initialization.D02_SimpleConstructor2"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="SimpleEnumUse">
+        <java
+                classname="ch05initialization.D41_SimpleEnumUse"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="StaticInitialization">
+        <java
+                classname="ch05initialization.D23_StaticInitialization"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="TerminationCondition">
+        <java
+                classname="ch05initialization.D14_TerminationCondition"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="VarArgs">
+        <java
+                classname="ch05initialization.D32_VarArgs"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="VarargType">
+        <java
+                classname="ch05initialization.D35_VarargType"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target
+            depends="build"
+            description="Compile and run"
+            name="run">
+        <touch file="${basedir}/../../out/production/tij4/ch05initialization/failures"/>
+        <antcall target="ArrayClassObj"/>
+        <antcall target="ArrayInit"/>
+        <antcall target="ArrayNew"/>
+        <antcall target="ArraysOfPrimitives"/>
+        <antcall target="AutoboxingVarargs"/>
+        <antcall target="BananaPeel"/>
+        <antcall target="Burrito"/>
+        <antcall target="DefaultConstructor"/>
+        <antcall target="Demotion"/>
+        <antcall target="DynamicArray"/>
+        <antcall target="EnumOrder"/>
+        <antcall target="ExplicitStatic"/>
+        <antcall target="Flower"/>
+        <antcall target="InitialValues"/>
+        <antcall target="Leaf"/>
+        <antcall target="Mugs"/>
+        <antcall target="NewVarArgs"/>
+        <antcall target="NoSynthesis"/>
+        <antcall target="OptionalTrailingArguments"/>
+        <antcall target="OrderOfInitialization"/>
+        <antcall target="Overloading"/>
+        <antcall target="OverloadingOrder"/>
+        <antcall target="OverloadingVarargs"/>
+        <antcall target="OverloadingVarargs3"/>
+        <antcall target="PassingThis"/>
+        <antcall target="PrimitiveOverloading"/>
+        <antcall target="SimpleConstructor"/>
+        <antcall target="SimpleConstructor2"/>
+        <antcall target="SimpleEnumUse"/>
+        <antcall target="StaticInitialization"/>
+        <antcall target="TerminationCondition"/>
+        <antcall target="VarArgs"/>
+        <antcall target="VarargType"/>
+        <!--<delete file="failures"/>-->
+    </target>
+
+    <target description="delete all byproducts" name="clean">
+        <delete>
+            <fileset dir="${basedir}/../../out/production/tij4/ch05initialization" includes="**/*.class"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch05initialization" includes="**/*Output.txt"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch05initialization" includes="**/log.txt"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch05initialization" includes="failures"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch05initialization" includes="build.xml"/>
+            <dirset dir="${basedir}/../../out/production/tij4/ch05initialization"/>
+        </delete>
+        <echo message="clean successful"/>
+    </target>
+
+</project>
+
+

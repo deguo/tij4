@@ -5,7 +5,7 @@ package ch02object.exercise;
  * 
  * <pre>
  * In the Initialization and Cleanup chapter, add
- * Javadoc documentation to the Overloading.java example.
+ * Javadoc documentation to the D03_Overloading.java example.
  * Extract it into an HTML file using Javadoc
  * and view it with your Web browser.
  *

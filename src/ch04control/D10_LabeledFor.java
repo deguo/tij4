@@ -1,6 +1,6 @@
 package ch04control;
 
-import static net.mindview.util.Print.*;
+import static commons.util.Print.*;
 
 /**
  * For loops with "labeled break" and "labeled continue."
@@ -27,7 +27,7 @@ import static net.mindview.util.Print.*;
  * break outer
  * </pre>
  */
-public class LabeledFor {
+public class D10_LabeledFor {
 	public static void main(String[] args) {
 		int i = 0;
 		outer: // Can't have statements here

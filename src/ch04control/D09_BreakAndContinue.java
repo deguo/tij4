@@ -1,6 +1,6 @@
 package ch04control;
 
-import static net.mindview.util.Range.*;
+import static commons.util.Range.*;
 
 /**
  * Demonstrates break and continue keywords.
@@ -13,7 +13,7 @@ import static net.mindview.util.Range.*;
  * </pre>
  */
 
-public class BreakAndContinue {
+public class D09_BreakAndContinue {
 	public static void main(String[] args) {
 		for (int i = 0; i < 100; i++) {
 			if (i == 74)

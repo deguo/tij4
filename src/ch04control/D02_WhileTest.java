@@ -3,7 +3,7 @@ package ch04control;
 /**
  * Demonstrates the while loop.
  */
-public class WhileTest {
+public class D02_WhileTest {
 	static boolean condition() {
 		boolean result = Math.random() < 0.99;
 		System.out.print(result + ", ");

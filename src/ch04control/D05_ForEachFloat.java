@@ -17,7 +17,7 @@ import java.util.*;
  * 0.73734957
  * </pre>
  */
-public class ForEachFloat {
+public class D05_ForEachFloat {
 	public static void main(String[] args) {
 		Random rand = new Random(47);
 		float f[] = new float[10];

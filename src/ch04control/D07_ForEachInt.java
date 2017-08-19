@@ -1,7 +1,7 @@
 package ch04control;
 
-import static net.mindview.util.Range.*;
-import static net.mindview.util.Print.*;
+import static commons.util.Range.*;
+import static commons.util.Print.*;
 
 /**
  * <pre>
@@ -11,7 +11,7 @@ import static net.mindview.util.Print.*;
  * 5 8 11 14 17
  * </pre>
  */
-public class ForEachInt {
+public class D07_ForEachInt {
 	public static void main(String[] args) {
 		for (int i : range(10)) // 0..9
 			printnb(i + " ");

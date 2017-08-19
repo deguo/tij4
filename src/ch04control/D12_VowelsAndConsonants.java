@@ -1,7 +1,7 @@
 package ch04control;
 
 import java.util.*;
-import static net.mindview.util.Print.*;
+import static commons.util.Print.*;
 
 /**
  * Demonstrates the switch statement.
@@ -24,7 +24,7 @@ import static net.mindview.util.Print.*;
  * ...
  * </pre>
  */
-public class VowelsAndConsonants {
+public class D12_VowelsAndConsonants {
 	public static void main(String[] args) {
 		Random rand = new Random(47);
 		for (int i = 0; i < 100; i++) {

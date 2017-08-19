@@ -1,6 +1,6 @@
 package ch04control;
 
-import static net.mindview.util.Print.*;
+import static commons.util.Print.*;
 
 /**
  * <pre>
@@ -10,7 +10,7 @@ import static net.mindview.util.Print.*;
  * 0
  * </pre>
  */
-public class IfElse2 {
+public class D08_IfElse2 {
 	static int test(int testval, int target) {
 		if (testval > target)
 			return +1;

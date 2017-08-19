@@ -1,6 +1,6 @@
 package ch04control;
 
-import static net.mindview.util.Print.*;
+import static commons.util.Print.*;
 
 /**
  * <pre>
@@ -10,7 +10,7 @@ import static net.mindview.util.Print.*;
  * 0
  * </pre>
  */
-public class IfElse {
+public class D01_IfElse {
 	static int result = 0;
 
 	static void test(int testval, int target) {

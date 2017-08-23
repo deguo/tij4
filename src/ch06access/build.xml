@@ -1,0 +1,165 @@
+<?xml version="1.0" ?>
+
+<project basedir="." default="run" name="ch06access">
+
+    <condition property="version1.8">
+        <equals arg1="1.8" arg2="${ant.java.version}"/>
+    </condition>
+
+    <target name="commons_util">
+        <javac
+                destdir="${basedir}/../../out/production/tij4"
+                srcdir="${basedir}/../commons/util">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+    </target>
+
+    <target name="commons_simple">
+        <javac
+                destdir="${basedir}/../../out/production/tij4"
+                srcdir="${basedir}/../commons/simple">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+    </target>
+
+    <target
+            depends="commons_util,commons_simple"
+            description="Build all classes in this directory"
+            name="build">
+        <fail message="J2SE8 required" unless="version1.8"/>
+        <echo message="Building 'access'"/>
+        <javac
+                destdir="${basedir}/../../out/production/tij4"
+                debug="true"
+                srcdir="${basedir}">
+            <exclude name="exercise/**/*.java"/>
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+        <echo message="Build 'access' succeeded"/>
+    </target>
+
+    <target name="Cake">
+        <java
+                classname="ch06access.D08_Cake"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ChocolateChip">
+        <java
+                classname="ch06access.D11_ChocolateChip"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ChocolateChip2">
+        <java
+                classname="ch06access.D12_ChocolateChip2"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Dinner">
+        <java
+                classname="ch06access.D07_Dinner"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="FullQualification">
+        <java
+                classname="ch06access.D01_FullQualification"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="IceCream">
+        <java
+                classname="ch06access.D10_IceCream"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ImportedMyClass">
+        <java
+                classname="ch06access.D04_ImportedMyClass"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="LibTest">
+        <java
+                classname="ch06access.D05_LibTest"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="PrintTest">
+        <java
+                classname="ch06access.D06_PrintTest"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="QualifiedMyClass">
+        <java
+                classname="ch06access.D03_QualifiedMyClass"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="SingleImport">
+        <java
+                classname="ch06access.D02_SingleImport"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target
+            depends="build"
+            description="Compile and run"
+            name="run">
+        <touch file="${basedir}/../../out/production/tij4/ch05initialization/failures"/>
+        <antcall target="Cake"/>
+        <antcall target="ChocolateChip"/>
+        <antcall target="ChocolateChip2"/>
+        <antcall target="Dinner"/>
+        <antcall target="FullQualification"/>
+        <antcall target="IceCream"/>
+        <antcall target="ImportedMyClass"/>
+        <antcall target="LibTest"/>
+        <antcall target="PrintTest"/>
+        <antcall target="QualifiedMyClass"/>
+        <antcall target="SingleImport"/>
+        <!--<delete file="failures"/>-->
+    </target>
+
+    <target description="delete all byproducts" name="clean">
+        <delete>
+            <fileset dir="${basedir}/../../out/production/tij4/ch06access" includes="**/*.class"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch06access" includes="**/*Output.txt"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch06access" includes="**/log.txt"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch06access" includes="failures"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch06access" includes="build.xml"/>
+            <dirset dir="${basedir}/../../out/production/tij4/ch06access"/>
+        </delete>
+        <echo message="clean successful"/>
+    </target>
+
+</project>
+
+

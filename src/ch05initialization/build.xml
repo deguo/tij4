@@ -23,6 +23,7 @@
                 excludes="OverloadingVarargs2.java"
                 destdir="${basedir}/../../out/production/tij4"
                 srcdir="${basedir}">
+            <exclude name="exercise/*.java"/>
             <compilerarg value="-Xmaxerrs"/>
             <compilerarg value="10"/>
         </javac>

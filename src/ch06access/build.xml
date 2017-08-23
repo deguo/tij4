@@ -133,7 +133,7 @@
             depends="build"
             description="Compile and run"
             name="run">
-        <touch file="${basedir}/../../out/production/tij4/ch05initialization/failures"/>
+        <touch file="${basedir}/../../out/production/tij4/ch06access/failures"/>
         <antcall target="Cake"/>
         <antcall target="ChocolateChip"/>
         <antcall target="ChocolateChip2"/>

@@ -1,0 +1,226 @@
+<?xml version="1.0" ?>
+
+<project basedir="." default="run" name="ch07reusing">
+
+    <condition property="version1.8">
+        <equals arg1="1.8" arg2="${ant.java.version}"/>
+    </condition>
+
+    <target name="commons_util">
+        <javac
+                destdir="${basedir}/../../out/production/tij4"
+                srcdir="${basedir}/../commons/util">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+    </target>
+
+    <target depends="commons_util" description="Build all classes in this directory" name="build">
+        <fail message="J2SE8 required" unless="version1.8"/>
+        <echo message="Building 'reusing'"/>
+        <javac
+                destdir="${basedir}/../../out/production/tij4"
+                debug="true"
+                excludes="Lisa.java"
+                srcdir="${basedir}">
+            <exclude name="exercise/**/*.java"/>
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+        <echo message="Build 'reusing' succeeded"/>
+    </target>
+
+    <target name="Bath">
+        <java
+                classname="ch07reusing.D02_Bath"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Beetle">
+        <java
+                classname="ch07reusing.D19_Beetle"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="BlankFinal">
+        <java
+                classname="ch07reusing.D15_BlankFinal"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="CADSystem">
+        <java
+                classname="ch07reusing.D08_CADSystem"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Car">
+        <java
+                classname="ch07reusing.D11_Car"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Cartoon">
+        <java
+                classname="ch07reusing.D04_Cartoon"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Chess">
+        <java
+                classname="ch07reusing.D05_Chess"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Detergent">
+        <java
+                classname="ch07reusing.D03_Detergent"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="FinalArguments">
+        <java
+                classname="ch07reusing.D16_FinalArguments"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="FinalData">
+        <java
+                classname="ch07reusing.D14_FinalData"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="FinalOverridingIllusion">
+        <java
+                classname="ch07reusing.D17_FinalOverridingIllusion"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Hide">
+        <java
+                classname="ch07reusing.D09_Hide"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Jurassic">
+        <java
+                classname="ch07reusing.D18_Jurassic"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Orc">
+        <java
+                classname="ch07reusing.D12_Orc"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="PlaceSetting">
+        <java
+                classname="ch07reusing.D07_PlaceSetting"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="SpaceShip">
+        <java
+                classname="ch07reusing.D06_SpaceShip"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="SpaceShipDelegation">
+        <java
+                classname="ch07reusing.D06_SpaceShipDelegation"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="SprinklerSystem">
+        <java
+                classname="ch07reusing.D01_SprinklerSystem"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Wind">
+        <java
+                classname="ch07reusing.D13_Wind"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target
+            depends="build"
+            description="Compile and run"
+            name="run">
+        <touch file="${basedir}/../../out/production/tij4/ch07reusing/failures"/>
+        <antcall target="Bath"/>
+        <antcall target="Beetle"/>
+        <antcall target="BlankFinal"/>
+        <antcall target="CADSystem"/>
+        <antcall target="Car"/>
+        <antcall target="Cartoon"/>
+        <antcall target="Chess"/>
+        <antcall target="Detergent"/>
+        <antcall target="FinalArguments"/>
+        <antcall target="FinalData"/>
+        <antcall target="FinalOverridingIllusion"/>
+        <antcall target="Hide"/>
+        <antcall target="Jurassic"/>
+        <antcall target="Orc"/>
+        <antcall target="PlaceSetting"/>
+        <antcall target="SpaceShip"/>
+        <antcall target="SpaceShipDelegation"/>
+        <antcall target="SprinklerSystem"/>
+        <antcall target="Wind"/>
+        <!--<delete file="failures"/>-->
+    </target>
+
+    <target description="delete all byproducts" name="clean">
+        <delete>
+            <fileset dir="${basedir}/../../out/production/tij4/ch07reusing" includes="**/*.class"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch07reusing" includes="**/*Output.txt"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch07reusing" includes="**/log.txt"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch07reusing" includes="failures"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch07reusing" includes="build.xml"/>
+            <dirset dir="${basedir}/../../out/production/tij4/ch07reusing"/>
+        </delete>
+        <echo message="clean successful"/>
+    </target>
+
+</project>
+
+

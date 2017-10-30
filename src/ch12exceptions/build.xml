@@ -255,7 +255,7 @@
         <antcall target="TurnOffChecking"/>
         <antcall target="WhoCalled"/>
         <antcall target="WithFinally"/>
-        <delete file="failures"/>
+        <!--<delete file="failures"/>-->
     </target>
 
     <target description="delete all byproducts" name="clean">

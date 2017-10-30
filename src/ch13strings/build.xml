@@ -1,0 +1,325 @@
+<?xml version="1.0" ?>
+
+<project basedir="." default="run" name="ch13strings">
+
+    <condition property="version1.8">
+        <equals arg1="1.8" arg2="${ant.java.version}"/>
+    </condition>
+
+    <target name="generics_coffee">
+        <javac
+                destdir="${basedir}/../../out/production/tij4"
+                srcdir="${basedir}/../ch15generics/coffee/">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+    </target>
+
+    <target name="commons_util">
+        <javac
+                destdir="${basedir}/../../out/production/tij4"
+                srcdir="${basedir}/../commons/util">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+    </target>
+
+    <target
+            depends="generics_coffee,commons_util"
+            description="Build all classes in this directory"
+            name="build">
+        <fail message="J2SE8 required" unless="version1.8"/>
+        <echo message="Building 'strings'"/>
+        <javac
+                destdir="${basedir}/../../out/production/tij4"
+                debug="true"
+                srcdir="${basedir}">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+        <echo message="Build 'strings' succeeded"/>
+    </target>
+
+    <target name="ArrayListDisplay">
+        <java
+                classname="ch13strings.D05_ArrayListDisplay"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="BetterRead">
+        <java
+                classname="ch13strings.D26_BetterRead"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Concatenation">
+        <java
+                classname="ch13strings.D02_Concatenation"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Conversion">
+        <java
+                classname="ch13strings.D10_Conversion"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="DatabaseException">
+        <java
+                classname="ch13strings.D11_DatabaseException"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Finding">
+        <java
+                classname="ch13strings.D17_Finding"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Groups">
+        <java
+                classname="ch13strings.D18_Groups"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Immutable">
+        <java
+                classname="ch13strings.D01_Immutable"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="InfiniteRecursion">
+        <java
+                classname="ch13strings.D06_InfiniteRecursion"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="IntegerMatch">
+        <java
+                classname="ch13strings.D12_IntegerMatch"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="JGrep">
+        <java
+                classname="ch13strings.D24_JGrep"
+                classpath="${java.class.path};${basedir};${basedir}/../../out/production/tij4"
+                dir="${basedir}"
+                failonerror="true"
+                fork="true">
+            <arg line='D24_JGrep.java "\b[Ssct]\w+"'/>
+        </java>
+    </target>
+
+    <target name="Receipt">
+        <java
+                classname="ch13strings.D09_Receipt"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ReFlags">
+        <java
+                classname="ch13strings.D20_ReFlags"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Replacing">
+        <java
+                classname="ch13strings.D14_Replacing"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ReplacingStringTokenizer">
+        <java
+                classname="ch13strings.D29_ReplacingStringTokenizer"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Resetting">
+        <java
+                classname="ch13strings.D23_Resetting"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Rudolph">
+        <java
+                classname="ch13strings.D15_Rudolph"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ScannerDelimiter">
+        <java
+                classname="ch13strings.D27_ScannerDelimiter"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="SimpleFormat">
+        <java
+                classname="ch13strings.D07_SimpleFormat"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="SimpleRead">
+        <java
+                classname="ch13strings.D25_SimpleRead"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="SplitDemo">
+        <java
+                classname="ch13strings.D21_SplitDemo"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Splitting">
+        <java
+                classname="ch13strings.D13_Splitting"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="StartEnd">
+        <java
+                classname="ch13strings.D19_StartEnd"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="TestRegularExpression">
+        <java
+                classname="ch13strings.D16_TestRegularExpression"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true">
+            <arg
+                    line='abcabcabcdefabc "abc+" "(abc)+" "(abc){2,}" '/>
+
+        </java>
+    </target>
+
+    <target name="TheReplacements">
+        <java
+                classname="ch13strings.D22_TheReplacements"
+                classpath="${java.class.path};${basedir};${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ThreatAnalyzer">
+        <java
+                classname="ch13strings.D28_ThreatAnalyzer"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Turtle">
+        <java
+                classname="ch13strings.D08_Turtle"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="UsingStringBuilder">
+        <java
+                classname="ch13strings.D04_UsingStringBuilder"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target
+            depends="build"
+            description="Compile and run"
+            name="run">
+        <touch file="${basedir}/../../out/production/tij4/ch13strings/failures"/>
+        <antcall target="ArrayListDisplay"/>
+        <antcall target="BetterRead"/>
+        <antcall target="Concatenation"/>
+        <antcall target="Conversion"/>
+        <antcall target="DatabaseException"/>
+        <antcall target="Finding"/>
+        <antcall target="Groups"/>
+        <antcall target="Immutable"/>
+        <antcall target="IntegerMatch"/>
+        <antcall target="JGrep"/>
+        <antcall target="Receipt"/>
+        <antcall target="ReFlags"/>
+        <antcall target="Replacing"/>
+        <antcall target="ReplacingStringTokenizer"/>
+        <antcall target="Resetting"/>
+        <antcall target="Rudolph"/>
+        <antcall target="ScannerDelimiter"/>
+        <antcall target="SimpleFormat"/>
+        <antcall target="SimpleRead"/>
+        <antcall target="SplitDemo"/>
+        <antcall target="Splitting"/>
+        <antcall target="StartEnd"/>
+        <antcall target="TestRegularExpression"/>
+        <antcall target="TheReplacements"/>
+        <antcall target="ThreatAnalyzer"/>
+        <antcall target="Turtle"/>
+        <antcall target="UsingStringBuilder"/>
+        <echo message="* InfiniteRecursion must be run by hand *"/>
+        <!--<delete file="failures"/>-->
+    </target>
+
+    <target description="delete all byproducts" name="clean">
+        <delete>
+            <fileset dir="${basedir}/../../out/production/tij4/ch13strings" includes="**/*.class"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch13strings" includes="**/*Output.txt"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch13strings" includes="**/log.txt"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch13strings" includes="failures"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch13strings" includes="build.xml"/>
+            <dirset dir="${basedir}/../../out/production/tij4/ch13strings"/>
+        </delete>
+        <echo message="clean successful"/>
+    </target>
+
+</project>
+
+

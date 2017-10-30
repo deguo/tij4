@@ -3,7 +3,7 @@ package ch08polymorphism;
 import static commons.util.Print.*;
 
 /**
- * Cleanup and inheritance.
+ * D21_Cleanup and inheritance.
  * 
  * <pre>
  *  Output:

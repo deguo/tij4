@@ -8,21 +8,21 @@ import static commons.util.Print.*;
 /**
  * <pre>
  * Output:	
- * People: [Person Luke, Person Marilyn, Person Isaac, Person Dawn, Person Kate]
+ * People: [D22_Person Luke, D22_Person Marilyn, D22_Person Isaac, D22_Person Dawn, D22_Person Kate]
  * Pets: [[Rat Fuzzy, Rat Fizzy], [Pug Louie aka Louis Snorkelstein Dupree, Cat Stanford aka Stinky el Negro, Cat Pinkola], [Rat Freckly], [Cymric Molly, Mutt Spot], [Cat Shackleton, Cat Elsie May, Dog Margrett]]
- * Person Luke has:
+ * D21_Person Luke has:
  *     Rat Fuzzy
  *     Rat Fizzy
- * Person Marilyn has:
+ * D21_Person Marilyn has:
  *     Pug Louie aka Louis Snorkelstein Dupree
  *     Cat Stanford aka Stinky el Negro
  *     Cat Pinkola
- * Person Isaac has:
+ * D21_Person Isaac has:
  *     Rat Freckly
- * Person Dawn has:
+ * D21_Person Dawn has:
  *     Cymric Molly
  *     Mutt Spot
- * Person Kate has:
+ * D21_Person Kate has:
  *     Cat Shackleton
  *     Cat Elsie May
  *     Dog Margrett

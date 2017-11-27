@@ -12,7 +12,7 @@ import java.util.*;
 public class D05_ArrayListDisplay {
 	public static void main(String[] args) {
 		ArrayList<Coffee> coffees = new ArrayList<Coffee>();
-		for (Coffee c : new CoffeeGenerator(10))
+		for (Coffee c : new D07_CoffeeGenerator(10))
 			coffees.add(c);
 		System.out.println(coffees);
 	}

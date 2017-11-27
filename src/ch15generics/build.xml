@@ -1,0 +1,705 @@
+<?xml version="1.0" ?>
+
+<project basedir="." default="run" name="ch15generics">
+
+    <condition property="version1.8">
+        <equals arg1="1.8" arg2="${ant.java.version}"/>
+    </condition>
+
+    <target name="typeinfo_pets">
+        <javac
+                destdir="${basedir}/../../out/production/tij4"
+                srcdir="${basedir}/../ch14typeinfo/pets/">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+    </target>
+
+    <target name="generics_coffee">
+        <javac
+                destdir="${basedir}/../../out/production/tij4"
+                srcdir="${basedir}/../ch15generics/coffee/">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+    </target>
+
+    <target name="commons_util">
+        <javac
+                destdir="${basedir}/../../out/production/tij4"
+                srcdir="${basedir}/../commons/util">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+    </target>
+
+    <target
+            depends="typeinfo_pets,generics_coffee,commons_util"
+            description="Build all classes in this directory"
+            name="build">
+        <fail message="J2SE8 required" unless="version1.8"/>
+        <echo message="Building 'generics'"/>
+        <javac
+                destdir="${basedir}/../../out/production/tij4"
+                debug="true"
+                excludes="D33_Erased.java,D63_HijackedInterface.java,D24_Manipulation.java,D58_MultipleInterfaceVariants.java,D45_NonCovariantGenerics.java,D62_UseList.java"
+                srcdir="${basedir}">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+        <echo message="Build 'generics' succeeded"/>
+    </target>
+
+    <target name="Apply">
+        <java
+                classname="ch15generics.ApplyTest"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ArrayMaker">
+        <java
+                classname="ch15generics.D28_ArrayMaker"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ArrayOfGeneric">
+        <java
+                classname="ch15generics.D37_ArrayOfGeneric"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="BankTeller">
+        <java
+                classname="ch15generics.D19_BankTeller"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="BasicBounds">
+        <java
+                classname="ch15generics.D41_BasicBounds"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="BasicGeneratorDemo">
+        <java
+                classname="ch15generics.D16_BasicGeneratorDemo"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="CaptureConversion">
+        <java
+                classname="ch15generics.D54_CaptureConversion"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="CheckedList">
+        <java
+                classname="ch15generics.D75_CheckedList"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ClassTypeCapture">
+        <java
+                classname="ch15generics.D33_ClassTypeCapture"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="CompilerIntelligence">
+        <java
+                classname="ch15generics.D46_CompilerIntelligence"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="CovariantArrays">
+        <java
+                classname="ch15generics.D44_CovariantArrays"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="CreatorGeneric">
+        <java
+                classname="ch15generics.D36_CreatorGeneric"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="CRGWithBasicHolder">
+        <java
+                classname="ch15generics.D65_CRGWithBasicHolder"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="DogsAndRobots">
+        <java
+                classname="ch15generics.D80_DogsAndRobots"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="DynamicProxyMixin">
+        <java
+                classname="ch15generics.D79_DynamicProxyMixin"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="EpicBattle">
+        <java
+                classname="ch15generics.D43_EpicBattle"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ErasedTypeEquivalence">
+        <java
+                classname="ch15generics.D22_ErasedTypeEquivalence"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ErasureAndInheritance">
+        <java
+                classname="ch15generics.D27_ErasureAndInheritance"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ExplicitTypeSpecification">
+        <java
+                classname="ch15generics.D13_ExplicitTypeSpecification"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="FactoryConstraint">
+        <java
+                classname="ch15generics.D35_FactoryConstraint"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Fibonacci">
+        <java
+                classname="ch15generics.D08_Fibonacci"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Fill">
+        <java
+                classname="ch15generics.FillTest"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Fill2">
+        <java
+                classname="ch15generics.Fill2Test"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="FilledListMaker">
+        <java
+                classname="ch15generics.D30_FilledListMaker"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Functional">
+        <java
+                classname="ch15generics.D86_Functional"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Generators">
+        <java
+                classname="ch15generics.D15_Generators"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="GenericArray">
+        <java
+                classname="ch15generics.D38_GenericArray"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="GenericArray2">
+        <java
+                classname="ch15generics.D39_GenericArray2"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="GenericArrayWithTypeToken">
+        <java
+                classname="ch15generics.D40_GenericArrayWithTypeToken"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="GenericCast">
+        <java
+                classname="ch15generics.D59_GenericCast"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="GenericHolder">
+        <java
+                classname="ch15generics.D32_GenericHolder"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="GenericMethods">
+        <java
+                classname="ch15generics.D10_GenericMethods"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="GenericReading">
+        <java
+                classname="ch15generics.D50_GenericReading"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="GenericsAndCovariance">
+        <java
+                classname="ch15generics.D45_GenericsAndCovariance"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="GenericVarargs">
+        <java
+                classname="ch15generics.D14_GenericVarargs"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="GenericWriting">
+        <java
+                classname="ch15generics.D49_GenericWriting"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Holder">
+        <java
+                classname="ch15generics.D47_Holder"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Holder2">
+        <java
+                classname="ch15generics.D02_Holder2"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Holder3">
+        <java
+                classname="ch15generics.D03_Holder3"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="InheritBounds">
+        <java
+                classname="ch15generics.D42_InheritBounds"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="InstantiateGenericType">
+        <java
+                classname="ch15generics.D34_InstantiateGenericType"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="IterableFibonacci">
+        <java
+                classname="ch15generics.D09_IterableFibonacci"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="LatentReflection">
+        <java
+                classname="ch15generics.D82_LatentReflection"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="LimitsOfInference">
+        <java
+                classname="ch15generics.D12_LimitsOfInference"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="LinkedStack">
+        <java
+                classname="ch15generics.D05_LinkedStack"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ListMaker">
+        <java
+                classname="ch15generics.D29_ListMaker"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ListOfInt">
+        <java
+                classname="ch15generics.D55_ListOfInt"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="LostInformation">
+        <java
+                classname="ch15generics.D23_LostInformation"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Mixins">
+        <java
+                classname="ch15generics.D77_Mixins"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="OrdinaryArguments">
+        <java
+                classname="ch15generics.D72_OrdinaryArguments"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="PlainGenericInheritance">
+        <java
+                classname="ch15generics.D74_PlainGenericInheritance"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="PrimitiveGenericTest">
+        <java
+                classname="ch15generics.D57_PrimitiveGenericTest"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="RandomList">
+        <java
+                classname="ch15generics.D06_RandomList"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="SelfBounding">
+        <java
+                classname="ch15generics.D67_SelfBounding"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="SelfBoundingMethods">
+        <java
+                classname="ch15generics.D69_SelfBoundingMethods"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="SimpleDogsAndRobots">
+        <java
+                classname="ch15generics.D81_SimpleDogsAndRobots"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="SimpleHolder">
+        <java
+                classname="ch15generics.D31_SimpleHolder"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="SimplerPets">
+        <java
+                classname="ch15generics.D11_SimplerPets"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Store">
+        <java
+                classname="ch15generics.D21_Store"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ThrowGenericException">
+        <java
+                classname="ch15generics.D76_ThrowGenericException"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="TupleList">
+        <java
+                classname="ch15generics.D20_TupleList"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="TupleTest">
+        <java
+                classname="ch15generics.D04_TupleTest"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="TupleTest2">
+        <java
+                classname="ch15generics.D17_TupleTest2"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="UnboundedWildcards1">
+        <java
+                classname="ch15generics.D51_UnboundedWildcards1"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="UnboundedWildcards2">
+        <java
+                classname="ch15generics.D52_UnboundedWildcards2"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Unconstrained">
+        <java
+                classname="ch15generics.D66_Unconstrained"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="WatercolorSets">
+        <java
+                classname="ch15generics.D18_WatercolorSets"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Wildcards">
+        <java
+                classname="ch15generics.D53_Wildcards"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="CoffeeGenerator">
+        <java
+                classname="ch15generics.coffee.D07_CoffeeGenerator"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Decoration">
+        <java
+                classname="ch15generics.decorator.D78_Decoration"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target
+            depends="build"
+            description="Compile and run"
+            name="run">
+        <touch file="${basedir}/../../out/production/tij4/ch15generics/failures"/>
+        <antcall target="Apply"/>
+        <antcall target="ArrayMaker"/>
+        <antcall target="ArrayOfGeneric"/>
+        <antcall target="BankTeller"/>
+        <antcall target="BasicBounds"/>
+        <antcall target="BasicGeneratorDemo"/>
+        <antcall target="CaptureConversion"/>
+        <antcall target="CheckedList"/>
+        <antcall target="ClassTypeCapture"/>
+        <antcall target="CompilerIntelligence"/>
+        <antcall target="CovariantArrays"/>
+        <antcall target="CreatorGeneric"/>
+        <antcall target="CRGWithBasicHolder"/>
+        <antcall target="DogsAndRobots"/>
+        <antcall target="DynamicProxyMixin"/>
+        <antcall target="EpicBattle"/>
+        <antcall target="ErasedTypeEquivalence"/>
+        <antcall target="ErasureAndInheritance"/>
+        <antcall target="ExplicitTypeSpecification"/>
+        <antcall target="FactoryConstraint"/>
+        <antcall target="Fibonacci"/>
+        <antcall target="Fill"/>
+        <antcall target="Fill2"/>
+        <antcall target="FilledListMaker"/>
+        <antcall target="Functional"/>
+        <antcall target="Generators"/>
+        <antcall target="GenericArray"/>
+        <antcall target="GenericArray2"/>
+        <antcall target="GenericArrayWithTypeToken"/>
+        <antcall target="GenericCast"/>
+        <antcall target="GenericHolder"/>
+        <antcall target="GenericMethods"/>
+        <antcall target="GenericReading"/>
+        <antcall target="GenericsAndCovariance"/>
+        <antcall target="GenericVarargs"/>
+        <antcall target="GenericWriting"/>
+        <antcall target="Holder"/>
+        <antcall target="Holder2"/>
+        <antcall target="Holder3"/>
+        <antcall target="InheritBounds"/>
+        <antcall target="InstantiateGenericType"/>
+        <antcall target="IterableFibonacci"/>
+        <antcall target="LatentReflection"/>
+        <antcall target="LimitsOfInference"/>
+        <antcall target="LinkedStack"/>
+        <antcall target="ListMaker"/>
+        <antcall target="ListOfInt"/>
+        <antcall target="LostInformation"/>
+        <antcall target="Mixins"/>
+        <antcall target="OrdinaryArguments"/>
+        <antcall target="PlainGenericInheritance"/>
+        <antcall target="PrimitiveGenericTest"/>
+        <antcall target="RandomList"/>
+        <antcall target="SelfBounding"/>
+        <antcall target="SelfBoundingMethods"/>
+        <antcall target="SimpleDogsAndRobots"/>
+        <antcall target="SimpleHolder"/>
+        <antcall target="SimplerPets"/>
+        <antcall target="Store"/>
+        <antcall target="ThrowGenericException"/>
+        <antcall target="TupleList"/>
+        <antcall target="TupleTest"/>
+        <antcall target="TupleTest2"/>
+        <antcall target="UnboundedWildcards1"/>
+        <antcall target="UnboundedWildcards2"/>
+        <antcall target="Unconstrained"/>
+        <antcall target="WatercolorSets"/>
+        <antcall target="Wildcards"/>
+        <antcall target="CoffeeGenerator"/>
+        <antcall target="Decoration"/>
+        <!--<delete file="failures"/>-->
+    </target>
+
+    <target description="delete all byproducts" name="clean">
+        <delete>
+            <fileset dir="${basedir}/../../out/production/tij4/ch15generics" includes="**/*.class"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch15generics" includes="**/*Output.txt"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch15generics" includes="**/log.txt"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch15generics" includes="failures"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch15generics" includes="build.xml"/>
+            <dirset dir="${basedir}/../../out/production/tij4/ch15generics"/>
+        </delete>
+        <echo message="clean successful"/>
+    </target>
+
+</project>
+
+

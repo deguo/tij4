@@ -1,0 +1,290 @@
+<?xml version="1.0" ?>
+
+<project basedir="." default="run" name="ch16arrays">
+
+    <condition property="version1.8">
+        <equals arg1="1.8" arg2="${ant.java.version}"/>
+    </condition>
+
+    <target name="commons_util">
+        <javac
+                destdir="${basedir}/../../out/production/tij4"
+                srcdir="${basedir}/../commons/util">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+    </target>
+
+    <target
+            depends="commons_util"
+            description="Build all classes in this directory"
+            name="build">
+        <fail message="J2SE8 required" unless="version1.8"/>
+        <echo message="Building 'arrays'"/>
+        <javac
+                destdir="${basedir}/../../out/production/tij4"
+                debug="true"
+                srcdir="${basedir}">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+        <echo message="Build 'arrays' succeeded"/>
+    </target>
+
+    <target name="AlphabeticSearch">
+        <java
+                classname="ch16arrays.D27_AlphabeticSearch"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ArrayOfGenerics">
+        <java
+                classname="ch16arrays.D12_ArrayOfGenerics"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ArrayOptions">
+        <java
+                classname="ch16arrays.D02_ArrayOptions"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ArraySearching">
+        <java
+                classname="ch16arrays.D26_ArraySearching"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="AssemblingMultidimensionalArrays">
+        <java
+                classname="ch16arrays.D09_AssemblingMultidimensionalArrays"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="AutoboxingArrays">
+        <java
+                classname="ch16arrays.D08_AutoboxingArrays"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ComparatorTest">
+        <java
+                classname="ch16arrays.D24_ComparatorTest"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ComparingArrays">
+        <java
+                classname="ch16arrays.D21_ComparingArrays"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="CompType">
+        <java
+                classname="ch16arrays.D22_CompType"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ContainerComparison">
+        <java
+                classname="ch16arrays.D01_ContainerComparison"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="CopyingArrays">
+        <java
+                classname="ch16arrays.D20_CopyingArrays"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="FillingArrays">
+        <java
+                classname="ch16arrays.D14_FillingArrays"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="GeneratorsTest">
+        <java
+                classname="ch16arrays.D15_GeneratorsTest"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="IceCream">
+        <java
+                classname="ch16arrays.D03_IceCream"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="MultidimensionalObjectArrays">
+        <java
+                classname="ch16arrays.D07_MultidimensionalObjectArrays"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="MultidimensionalPrimitiveArray">
+        <java
+                classname="ch16arrays.D04_MultidimensionalPrimitiveArray"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="MultiDimWrapperArray">
+        <java
+                classname="ch16arrays.D10_MultiDimWrapperArray"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ParameterizedArrayType">
+        <java
+                classname="ch16arrays.D11_ParameterizedArrayType"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="PrimitiveConversionDemonstration">
+        <java
+                classname="ch16arrays.D18_PrimitiveConversionDemonstration"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="RaggedArray">
+        <java
+                classname="ch16arrays.D06_RaggedArray"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="RandomGeneratorsTest">
+        <java
+                classname="ch16arrays.D16_RandomGeneratorsTest"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Reverse">
+        <java
+                classname="ch16arrays.D23_Reverse"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="StringSorting">
+        <java
+                classname="ch16arrays.D25_StringSorting"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="TestArrayGeneration">
+        <java
+                classname="ch16arrays.D19_TestArrayGeneration"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="TestGenerated">
+        <java
+                classname="ch16arrays.D17_TestGenerated"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ThreeDWithNew">
+        <java
+                classname="ch16arrays.D05_ThreeDWithNew"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target
+            depends="build"
+            description="Compile and run"
+            name="run">
+        <touch file="${basedir}/../../out/production/tij4/ch16arrays/failures"/>
+        <antcall target="AlphabeticSearch"/>
+        <antcall target="ArrayOfGenerics"/>
+        <antcall target="ArrayOptions"/>
+        <antcall target="ArraySearching"/>
+        <antcall target="AssemblingMultidimensionalArrays"/>
+        <antcall target="AutoboxingArrays"/>
+        <antcall target="ComparatorTest"/>
+        <antcall target="ComparingArrays"/>
+        <antcall target="CompType"/>
+        <antcall target="ContainerComparison"/>
+        <antcall target="CopyingArrays"/>
+        <antcall target="FillingArrays"/>
+        <antcall target="GeneratorsTest"/>
+        <antcall target="IceCream"/>
+        <antcall target="MultidimensionalObjectArrays"/>
+        <antcall target="MultidimensionalPrimitiveArray"/>
+        <antcall target="MultiDimWrapperArray"/>
+        <antcall target="ParameterizedArrayType"/>
+        <antcall target="PrimitiveConversionDemonstration"/>
+        <antcall target="RaggedArray"/>
+        <antcall target="RandomGeneratorsTest"/>
+        <antcall target="Reverse"/>
+        <antcall target="StringSorting"/>
+        <antcall target="TestArrayGeneration"/>
+        <antcall target="TestGenerated"/>
+        <antcall target="ThreeDWithNew"/>
+        <!--<delete file="failures"/>-->
+    </target>
+
+    <target description="delete all byproducts" name="clean">
+        <delete>
+            <fileset dir="${basedir}/../../out/production/tij4/ch16arrays" includes="**/*.class"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch16arrays" includes="**/*Output.txt"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch16arrays" includes="**/log.txt"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch16arrays" includes="failures"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch16arrays" includes="build.xml"/>
+            <dirset dir="${basedir}/../../out/production/tij4/ch16arrays"/>
+        </delete>
+        <echo message="clean successful"/>
+    </target>
+
+</project>
+
+

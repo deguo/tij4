@@ -1,0 +1,413 @@
+<?xml version="1.0" ?>
+
+<project basedir="." default="run" name="ch17containers">
+
+
+    <condition property="version1.8">
+        <equals arg1="1.8" arg2="${ant.java.version}"/>
+    </condition>
+
+    <target name="typeinfo_pets">
+        <javac
+                destdir="${basedir}/../../out/production/tij4"
+                srcdir="${basedir}/../ch14typeinfo/pets/">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+    </target>
+
+    <target name="commons_util">
+        <javac
+                destdir="${basedir}/../../out/production/tij4"
+                srcdir="${basedir}/../commons/util">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+    </target>
+
+    <target name="holding">
+        <javac
+                destdir="${basedir}/../../out/production/tij4"
+                srcdir="${basedir}/../ch11holding/">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+    </target>
+
+    <target
+            depends="typeinfo_pets,commons_util,holding"
+            description="Build all classes in this directory"
+            name="build">
+        <fail message="J2SE8 required" unless="version1.8"/>
+        <echo message="Building 'containers'"/>
+        <javac
+                destdir="${basedir}/../../out/production/tij4"
+                debug="true"
+                srcdir="${basedir}">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+        <echo message="Build 'containers' succeeded"/>
+    </target>
+
+    <target name="AssociativeArray">
+        <java
+                classname="ch17containers.D13_AssociativeArray"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Bits">
+        <java
+                classname="ch17containers.D38_Bits"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="CanonicalMapping">
+        <java
+                classname="ch17containers.D35_CanonicalMapping"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="CollectionDataGeneration">
+        <java
+                classname="ch17containers.D03_CollectionDataGeneration"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="CollectionDataTest">
+        <java
+                classname="ch17containers.D02_CollectionDataTest"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="CollectionMethods">
+        <java
+                classname="ch17containers.D05_CollectionMethods"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="CountedString">
+        <java
+                classname="ch17containers.D22_CountedString"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="DequeTest">
+        <java
+                classname="ch17containers.D12_DequeTest"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Enumerations">
+        <java
+                classname="ch17containers.D36_Enumerations"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="FailFast">
+        <java
+                classname="ch17containers.D33_FailFast"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="FillingLists">
+        <java
+                classname="ch17containers.D01_FillingLists"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="IndividualTest">
+        <java
+                classname="ch17containers.D23_IndividualTest"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="LinkedHashMapDemo">
+        <java
+                classname="ch17containers.D16_LinkedHashMapDemo"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ListPerformance">
+        <java
+                classname="ch17containers.D25_ListPerformance"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true">
+            <arg line="100 500"/>
+        </java>
+    </target>
+
+    <target name="Lists">
+        <java
+                classname="ch17containers.D07_Lists"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ListSortSearch">
+        <java classname="ch17containers.D30_ListSortSearch"
+              dir="../../out/production/tij4"
+              failonerror="true"
+              fork="true"/>
+    </target>
+
+    <target name="MapDataTest">
+        <java
+                classname="ch17containers.D04_MapDataTest"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="MapPerformance">
+        <java
+                classname="ch17containers.D28_MapPerformance"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true">
+            <arg line="100 5000"/>
+        </java>
+    </target>
+
+    <target name="Maps">
+        <java
+                classname="ch17containers.D14_Maps"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="QueueBehavior">
+        <java
+                classname="ch17containers.D10_QueueBehavior"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="RandomBounds">
+        <java
+                classname="ch17containers.D26_RandomBounds"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ReadOnly">
+        <java
+                classname="ch17containers.D31_ReadOnly"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="References">
+        <java
+                classname="ch17containers.D34_References"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="SetPerformance">
+        <java
+                classname="ch17containers.D27_SetPerformance"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true">
+            <arg line="100 5000"/>
+        </java>
+    </target>
+
+    <target name="SimpleHashMap">
+        <java
+                classname="ch17containers.D20_SimpleHashMap"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="SlowMap">
+        <java
+                classname="ch17containers.D19_SlowMap"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="SortedMapDemo">
+        <java
+                classname="ch17containers.D15_SortedMapDemo"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="SortedSetDemo">
+        <java
+                classname="ch17containers.D09_SortedSetDemo"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="SpringDetector">
+        <java
+                classname="ch17containers.D17_SpringDetector"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="SpringDetector2">
+        <java
+                classname="ch17containers.D18_SpringDetector2"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Stacks">
+        <java
+                classname="ch17containers.D37_Stacks"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="StringHashCode">
+        <java
+                classname="ch17containers.D21_StringHashCode"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Synchronization">
+        <java
+                classname="ch17containers.D32_Synchronization"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ToDoList">
+        <java
+                classname="ch17containers.D11_ToDoList"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="TypesForSets">
+        <java
+                classname="ch17containers.D08_TypesForSets"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Unsupported">
+        <java
+                classname="ch17containers.D06_Unsupported"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Utilities">
+        <java
+                classname="ch17containers.D29_Utilities"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target
+            depends="build"
+            description="Compile and run"
+            name="run">
+        <touch file="${basedir}/../../out/production/tij4/ch17containers/failures"/>
+        <antcall target="AssociativeArray"/>
+        <antcall target="Bits"/>
+        <antcall target="CanonicalMapping"/>
+        <antcall target="CollectionDataGeneration"/>
+        <antcall target="CollectionDataTest"/>
+        <antcall target="CollectionMethods"/>
+        <antcall target="CountedString"/>
+        <antcall target="DequeTest"/>
+        <antcall target="Enumerations"/>
+        <antcall target="FailFast"/>
+        <antcall target="FillingLists"/>
+        <antcall target="IndividualTest"/>
+        <antcall target="LinkedHashMapDemo"/>
+        <antcall target="ListPerformance"/>
+        <antcall target="Lists"/>
+        <antcall target="ListSortSearch"/>
+        <antcall target="MapDataTest"/>
+        <antcall target="MapPerformance"/>
+        <antcall target="Maps"/>
+        <antcall target="QueueBehavior"/>
+        <antcall target="ReadOnly"/>
+        <antcall target="References"/>
+        <antcall target="SetPerformance"/>
+        <antcall target="SimpleHashMap"/>
+        <antcall target="SlowMap"/>
+        <antcall target="SortedMapDemo"/>
+        <antcall target="SortedSetDemo"/>
+        <antcall target="SpringDetector"/>
+        <antcall target="SpringDetector2"/>
+        <antcall target="Stacks"/>
+        <antcall target="StringHashCode"/>
+        <antcall target="Synchronization"/>
+        <antcall target="ToDoList"/>
+        <antcall target="TypesForSets"/>
+        <antcall target="Unsupported"/>
+        <antcall target="Utilities"/>
+        <echo message="* RandomBounds must be run by hand *"/>
+        <!--<delete file="failures"/>-->
+    </target>
+
+    <target description="delete all byproducts" name="clean">
+        <delete>
+            <fileset dir="${basedir}/../../out/production/tij4/ch17containers" includes="**/*.class"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch17containers" includes="**/*Output.txt"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch17containers" includes="**/log.txt"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch17containers" includes="failures"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch17containers" includes="build.xml"/>
+            <dirset dir="${basedir}/../../out/production/tij4/ch17containers"/>
+        </delete>
+        <echo message="clean successful"/>
+    </target>
+
+</project>
+
+

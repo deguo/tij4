@@ -1,0 +1,545 @@
+<?xml version="1.0" ?>
+
+<project basedir="." default="run" name="ch18io">
+
+    <condition property="version1.8">
+        <equals arg1="1.8" arg2="${ant.java.version}"/>
+    </condition>
+
+    <available
+            classname="nu.xom.Node"
+            classpath="${basedir}/../../lib/xom-1.2.10.jar"
+            property="nu.xom.Node"/>
+
+    <target name="commons_util">
+        <javac
+                destdir="${basedir}/../../out/production/tij4"
+                srcdir="${basedir}/../commons/util">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+    </target>
+
+    <target
+            depends="commons_util"
+            description="Build all classes in this directory"
+            name="build">
+        <fail message="J2SE8 required" unless="version1.8"/>
+        <fail
+                Unless="nu.xom.Node"
+                message="You must install the XOM library from http://www.xom.nu"/>
+        <echo message="Building 'io'"/>
+        <javac
+                classpath="${basedir}/..:${basedir}/../../lib/xom-1.2.10.jar"
+                destdir="${basedir}/../../out/production/tij4"
+                debug="true"
+                srcdir="${basedir}">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+        <echo message="Build 'io' succeeded"/>
+    </target>
+
+    <target name="AvailableCharSets">
+        <java
+                classname="ch18io.D22_AvailableCharSets"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="BasicFileOutput">
+        <java
+                classname="ch18io.D10_BasicFileOutput"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Blip3">
+        <java
+                classname="ch18io.D37_Blip3"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Blips">
+        <java
+                classname="ch18io.D36_Blips"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="BufferedInputFile">
+        <java
+                classname="ch18io.D06_BufferedInputFile"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="BufferToText">
+        <java
+                classname="ch18io.D21_BufferToText"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ChangeSystemOut">
+        <java
+                classname="ch18io.D15_ChangeSystemOut"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ChannelCopy">
+        <java
+                classname="ch18io.D19_ChannelCopy"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true">
+            <arg line="src/ch18io/D19_ChannelCopy.java test.txt"/>
+        </java>
+    </target>
+
+    <target name="DirectoryDemo">
+        <java
+                classname="ch18io.D04_DirectoryDemo"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="DirList">
+        <java
+                classname="ch18io.D01_DirList"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true">
+            <arg line='"D.*\.java"'/>
+
+        </java>
+    </target>
+
+    <target name="DirList2">
+        <java
+                classname="ch18io.D02_DirList2"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true">
+            <arg line='"D.*\.java"'/>
+
+        </java>
+    </target>
+
+    <target name="DirList3">
+        <java
+                classname="ch18io.D03_DirList3"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true">
+            <arg line='"D.*\.java"'/>
+
+        </java>
+    </target>
+
+    <target name="Echo">
+        <java
+                classname="ch18io.D14_Echo"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Endians">
+        <java
+                classname="ch18io.D26_Endians"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="FileLocking">
+        <java
+                classname="ch18io.D30_FileLocking"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="FileOutputShortcut">
+        <java
+                classname="ch18io.D11_FileOutputShortcut"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="FormattedMemoryInput">
+        <java
+                classname="ch18io.D08_FormattedMemoryInput"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="FreezeAlien">
+        <java
+                classname="ch18io.D35_FreezeAlien"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="GetChannel">
+        <java
+                classname="ch18io.D18_GetChannel"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="GetData">
+        <java
+                classname="ch18io.D23_GetData"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="GZIPcompress">
+        <java
+                classname="ch18io.D32_GZIPcompress"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true">
+            <arg line="src/ch18io/D32_GZIPcompress.java"/>
+        </java>
+    </target>
+
+    <target name="IntBufferDemo">
+        <java
+                classname="ch18io.D24_IntBufferDemo"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="LargeMappedFiles">
+        <java
+                classname="ch18io.D28_LargeMappedFiles"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="LockingMappedFiles">
+        <java
+                classname="ch18io.D31_LockingMappedFiles"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Logon">
+        <java
+                classname="ch18io.D38_Logon"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="MakeDirectories">
+        <java
+                classname="ch18io.D05_MakeDirectories"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true">
+            <arg line="MakeDirectoriesTest"/>
+        </java>
+    </target>
+
+    <target name="MappedIO">
+        <java
+                classname="ch18io.D29_MappedIO"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="MemoryInput">
+        <java
+                classname="ch18io.D07_MemoryInput"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="MyWorld">
+        <java
+                classname="ch18io.D40_MyWorld"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="OSExecuteDemo">
+        <java
+                classname="ch18io.D17_OSExecuteDemo"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="PreferencesDemo">
+        <java
+                classname="ch18io.D45_PreferencesDemo"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target depends="StoreCADState" name="RecoverCADState">
+        <java
+                classname="ch18io.D42_RecoverCADState"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Redirecting">
+        <java
+                classname="ch18io.D16_Redirecting"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="SerialCtl">
+        <java
+                classname="ch18io.D39_SerialCtl"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="StoreCADState">
+        <java
+                classname="ch18io.D41_StoreCADState"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="StoringAndRecoveringData">
+        <java
+                classname="ch18io.D12_StoringAndRecoveringData"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="TestEOF">
+        <java
+                classname="ch18io.D09_TestEOF"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="TransferTo">
+        <java
+                classname="ch18io.D20_TransferTo"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true">
+            <arg line="src/ch18io/D20_TransferTo.java TransferTo.txt"/>
+        </java>
+    </target>
+
+    <target name="UsingBuffers">
+        <java
+                classname="ch18io.D27_UsingBuffers"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="UsingRandomAccessFile">
+        <java
+                classname="ch18io.D13_UsingRandomAccessFile"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ViewBuffers">
+        <java
+                classname="ch18io.D25_ViewBuffers"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Worm">
+        <java
+                classname="ch18io.D34_Worm"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ZipCompress">
+        <java
+                classname="ch18io.D33_ZipCompress"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true">
+            <arg line="src/ch18io/D33_ZipCompress.java"/>
+        </java>
+    </target>
+
+    <target name="ThawAlien">
+        <java
+                classname="ch18io.D35_ThawAlien"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target depends="Person" name="People">
+        <java
+                classname="ch18io.D43_People"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Person">
+        <java
+                classname="ch18io.Person"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target
+            depends="build"
+            description="Compile and run"
+            name="run">
+        <touch file="${basedir}/../../out/production/tij4/ch18io/failures"/>
+        <antcall target="AvailableCharSets"/>
+        <antcall target="BasicFileOutput"/>
+        <antcall target="Blip3"/>
+        <antcall target="Blips"/>
+        <antcall target="BufferedInputFile"/>
+        <antcall target="BufferToText"/>
+        <antcall target="ChangeSystemOut"/>
+        <antcall target="ChannelCopy"/>
+        <antcall target="DirectoryDemo"/>
+        <antcall target="DirList"/>
+        <antcall target="DirList2"/>
+        <antcall target="DirList3"/>
+        <antcall target="Endians"/>
+        <antcall target="FileLocking"/>
+        <antcall target="FileOutputShortcut"/>
+        <antcall target="FormattedMemoryInput"/>
+        <antcall target="FreezeAlien"/>
+        <antcall target="GetChannel"/>
+        <antcall target="GetData"/>
+        <antcall target="GZIPcompress"/>
+        <antcall target="IntBufferDemo"/>
+        <antcall target="Logon"/>
+        <antcall target="MakeDirectories"/>
+        <antcall target="MappedIO"/>
+        <antcall target="MemoryInput"/>
+        <antcall target="MyWorld"/>
+        <antcall target="OSExecuteDemo"/>
+        <antcall target="PreferencesDemo"/>
+        <antcall target="RecoverCADState"/>
+        <antcall target="Redirecting"/>
+        <antcall target="SerialCtl"/>
+        <antcall target="StoreCADState"/>
+        <antcall target="StoringAndRecoveringData"/>
+        <antcall target="TestEOF"/>
+        <antcall target="TransferTo"/>
+        <antcall target="UsingBuffers"/>
+        <antcall target="UsingRandomAccessFile"/>
+        <antcall target="ViewBuffers"/>
+        <antcall target="Worm"/>
+        <antcall target="ZipCompress"/>
+
+        <antcall target="People"/>
+        <antcall target="Person"/>
+
+        <echo message="* Echo must be run by hand *"/>
+        <echo message="* LargeMappedFiles must be run by hand *"/>
+        <echo message="* LockingMappedFiles must be run by hand *"/>
+        <echo message="* ThawAlien must be run by hand *"/>
+        <!--<delete file="failures"/>-->
+    </target>
+
+    <target description="delete all byproducts" name="clean">
+        <delete>
+            <fileset dir="${basedir}/../../out/production/tij4/ch18io" includes="**/*.class"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch18io" includes="**/*Output.txt"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch18io" includes="**/log.txt"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch18io" includes="failures"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch18io" includes="build.xml"/>
+            <dirset dir="${basedir}/../../out/production/tij4/ch18io"/>
+        </delete>
+        <echo message="clean successful"/>
+    </target>
+
+</project>
+
+

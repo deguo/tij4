@@ -1,0 +1,341 @@
+<?xml version="1.0" ?>
+
+<project basedir="." default="run" name="ch19enumerated">
+
+    <condition property="version1.8">
+        <equals arg1="1.8" arg2="${ant.java.version}"/>
+    </condition>
+
+    <target name="commons_util">
+        <javac
+                destdir="${basedir}/../../out/production/tij4"
+                srcdir="${basedir}/../commons/util">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+    </target>
+
+    <target
+            depends="commons_util"
+            description="Build all classes in this directory"
+            name="build">
+        <fail message="J2SE8 required" unless="version1.8"/>
+        <echo message="Building 'enumerated'"/>
+        <javac
+                destdir="${basedir}/../../out/production/tij4"
+                debug="true"
+                srcdir="${basedir}">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+        <echo message="Build 'enumerated' succeeded"/>
+    </target>
+
+    <target name="BigEnumSet">
+        <java
+                classname="ch19enumerated.D16_BigEnumSet"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Burrito">
+        <java
+                classname="ch19enumerated.D02_Burrito"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="CarWash">
+        <java
+                classname="ch19enumerated.D20_CarWash"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ConstantSpecificMethod">
+        <java
+                classname="ch19enumerated.D18_ConstantSpecificMethod"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="EnumClass">
+        <java
+                classname="ch19enumerated.D01_EnumClass"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="EnumMaps">
+        <java
+                classname="ch19enumerated.D17_EnumMaps"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="EnumSets">
+        <java
+                classname="ch19enumerated.D15_EnumSets"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="NonEnum">
+        <java
+                classname="ch19enumerated.D08_NonEnum"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="OverrideConstantSpecific">
+        <java
+                classname="ch19enumerated.D21_OverrideConstantSpecific"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="OzWitch">
+        <java
+                classname="ch19enumerated.D03_OzWitch"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="PostOffice">
+        <java
+                classname="ch19enumerated.D22_PostOffice"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="RandomTest">
+        <java
+                classname="ch19enumerated.D10_RandomTest"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Reflection">
+        <java
+                classname="ch19enumerated.D06_Reflection"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="RoShamBo1">
+        <java
+                classname="ch19enumerated.D25_RoShamBo1"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="RoShamBo2">
+        <java
+                classname="ch19enumerated.D26_RoShamBo2"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="RoShamBo3">
+        <java
+                classname="ch19enumerated.D27_RoShamBo3"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="RoShamBo4">
+        <java
+                classname="ch19enumerated.D28_RoShamBo4"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="RoShamBo5">
+        <java
+                classname="ch19enumerated.D29_RoShamBo5"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="RoShamBo6">
+        <java
+                classname="ch19enumerated.D30_RoShamBo6"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="SecurityCategory">
+        <java
+                classname="ch19enumerated.D13_SecurityCategory"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="SpaceShip">
+        <java
+                classname="ch19enumerated.D04_SpaceShip"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="TrafficLight">
+        <java
+                classname="ch19enumerated.D05_TrafficLight"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="UpcastEnum">
+        <java
+                classname="ch19enumerated.D07_UpcastEnum"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="VendingMachine">
+        <java
+                classname="ch19enumerated.D24_VendingMachine"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true">
+            <arg line="src/ch19enumerated/VendingMachineInput.txt"/>
+        </java>
+    </target>
+
+    <target name="EnumImplementation">
+        <java
+                classname="ch19enumerated.cartoons.D09_EnumImplementation"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Meal">
+        <java
+                classname="ch19enumerated.menu.D12_Meal"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Meal2">
+        <java
+                classname="ch19enumerated.menu.D14_Meal2"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="TypeOfFood">
+        <java
+                classname="ch19enumerated.menu.D11_TypeOfFood"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="NotClasses">
+        <exec executable="javap">
+            <arg value="-c"/>
+            <arg value="-classpath"/>
+            <arg value="${basedir}/../../out/production/tij4"/>
+            <arg value="ch19enumerated.LikeClasses"/>
+        </exec>
+    </target>
+
+    <target
+            depends="build"
+            description="Compile and run"
+            name="run">
+        <touch file="${basedir}/../../out/production/tij4/ch19enumerated/failures"/>
+        <antcall target="BigEnumSet"/>
+        <antcall target="Burrito"/>
+        <antcall target="CarWash"/>
+        <antcall target="ConstantSpecificMethod"/>
+        <antcall target="EnumClass"/>
+        <antcall target="EnumMaps"/>
+        <antcall target="EnumSets"/>
+        <antcall target="NonEnum"/>
+        <antcall target="OverrideConstantSpecific"/>
+        <antcall target="OzWitch"/>
+        <antcall target="PostOffice"/>
+        <antcall target="RandomTest"/>
+        <antcall target="Reflection"/>
+        <antcall target="RoShamBo1"/>
+        <antcall target="RoShamBo2"/>
+        <antcall target="RoShamBo3"/>
+        <antcall target="RoShamBo4"/>
+        <antcall target="RoShamBo5"/>
+        <antcall target="RoShamBo6"/>
+        <antcall target="SecurityCategory"/>
+        <antcall target="SpaceShip"/>
+        <antcall target="TrafficLight"/>
+        <antcall target="UpcastEnum"/>
+        <antcall target="VendingMachine"/>
+        <antcall target="EnumImplementation"/>
+        <antcall target="Meal"/>
+        <antcall target="Meal2"/>
+        <antcall target="TypeOfFood"/>
+        <antcall target="NotClasses"/>
+        <!--<delete file="failures"/>-->
+    </target>
+
+    <target description="delete all byproducts" name="clean">
+        <delete dir="${basedir}/../../out/production/tij4/ch19enumerated"/>
+        <echo message="clean successful"/>
+    </target>
+
+</project>
+
+

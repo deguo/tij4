@@ -1,0 +1,208 @@
+<?xml version="1.0" ?>
+
+<project basedir="." default="run" name="ch20annotations">
+
+    <condition property="version1.8">
+        <equals arg1="1.8" arg2="${ant.java.version}"/>
+    </condition>
+
+    <target name="commons_util">
+        <javac
+                destdir="${basedir}/../../out/production/tij4"
+                srcdir="${basedir}/../commons/util">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+    </target>
+
+    <target name="commons_atunit">
+        <javac
+                classpath="${basedir}/..:${basedir}/../../lib/javassist.jar"
+                destdir="${basedir}/../../out/production/tij4"
+                srcdir="${basedir}/../commons/atunit/">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+    </target>
+
+    <target
+            depends="commons_util,commons_atunit"
+            description="Build all classes in this directory"
+            name="build">
+        <fail message="J2SE8 required" unless="version1.8"/>
+        <echo message="Building 'annotations'"/>
+        <javac
+                classpath="${basedir}/..:${basedir}/../../lib/apt-mirror-api-0.1.jar"
+                destdir="${basedir}/../../out/production/tij4"
+                debug="true"
+                srcdir="${basedir}">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+        <echo message="Build 'annotations' succeeded"/>
+    </target>
+
+    <target name="AtUnitComposition">
+        <java
+                classname="ch20annotations.D14_AtUnitComposition"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="AtUnitExample1">
+        <java
+                classname="ch20annotations.D12_AtUnitExample1"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="AtUnitExample2">
+        <java
+                classname="ch20annotations.D15_AtUnitExample2"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="AtUnitExample3">
+        <java
+                classname="ch20annotations.D17_AtUnitExample3"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="AtUnitExample4">
+        <java
+                classname="ch20annotations.D18_AtUnitExample4"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="AtUnitExample5">
+        <java
+                classname="ch20annotations.D19_AtUnitExample5"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="AtUnitExternalTest">
+        <java
+                classname="ch20annotations.D13_AtUnitExternalTest"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="HashSetTest">
+        <java
+                classname="ch20annotations.D16_HashSetTest"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Multiplier">
+        <java
+                classname="ch20annotations.D08_Multiplier"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="StackLStringTest">
+        <java
+                classname="ch20annotations.D20_StackLStringTest"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="UseCaseTracker">
+        <java
+                classname="ch20annotations.D04_UseCaseTracker"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="TableCreator">
+        <java
+                classname="ch20annotations.database.D06_TableCreator"
+                classpath="${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true">
+            <arg line="ch20annotations.database.Member"/>
+        </java>
+    </target>
+
+    <target name="InterfaceExtractorProcessor">
+        <exec executable="apt">
+            <arg value="-factory"/>
+            <arg
+                    value="ch20annotations.D10_InterfaceExtractorProcessorFactory"/>
+            <arg value="D08_Multiplier.java"/>
+            <arg value="-s"/>
+            <arg value="../ch20annotations"/>
+        </exec>
+    </target>
+
+    <target name="TableCreationProcessorFactory">
+        <exec executable="apt">
+            <arg value="-factory"/>
+            <arg
+                    value="ch20annotations.database.D11_TableCreationProcessorFactory"/>
+            <arg value="database/Member.java"/>
+            <arg value="-s"/>
+            <arg value="database"/>
+        </exec>
+    </target>
+
+    <target
+            depends="build"
+            description="Compile and run"
+            name="run">
+        <touch file="${basedir}/../../out/production/tij4/ch20annotations/failures"/>
+        <antcall target="AtUnitComposition"/>
+        <antcall target="AtUnitExample1"/>
+        <antcall target="AtUnitExample2"/>
+        <antcall target="AtUnitExample3"/>
+        <antcall target="AtUnitExample4"/>
+        <antcall target="AtUnitExample5"/>
+        <antcall target="AtUnitExternalTest"/>
+        <antcall target="HashSetTest"/>
+        <antcall target="Multiplier"/>
+        <antcall target="StackLStringTest"/>
+        <antcall target="UseCaseTracker"/>
+        <antcall target="TableCreator"/>
+        <!--
+        <antcall target="InterfaceExtractorProcessor"/>
+        <antcall target="TableCreationProcessorFactory"/>
+        -->
+        <!--<delete file="failures"/>-->
+    </target>
+
+    <target description="delete all byproducts" name="clean">
+        <delete dir="${basedir}/../../out/production/tij4/ch20annotations"/>
+        <echo message="clean successful"/>
+    </target>
+
+</project>
+
+

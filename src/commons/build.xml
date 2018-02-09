@@ -1,0 +1,174 @@
+<?xml version="1.0" ?>
+
+<project basedir="." default="run" name="chapter:commons">
+
+    <condition property="version1.8">
+        <equals arg1="1.8" arg2="${ant.java.version}"/>
+    </condition>
+
+    <available
+            classname="javassist.bytecode.ClassFile"
+            classpath="${basedir}/../../lib/javassist.jar"
+            property="javassist.bytecode.ClassFile"/>
+
+    <target name="commons_util">
+        <javac
+                classpath="${basedir}/.."
+                destdir="${basedir}/../../out/production/tij4"
+                srcdir="${basedir}/../commons/util/">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+    </target>
+
+    <target depends="commons_util" description="Build all classes in this directory" name="build">
+        <fail message="J2SE8 required" unless="version1.8"/>
+        <fail
+                unless="javassist.bytecode.ClassFile"
+                message="You must install the Javassist library from http://sourceforge.net/projects/jboss/"/>
+        <echo message="Building 'commons'"/>
+        <javac
+                classpath="${basedir}/..:${basedir}/../../lib/javassist.jar"
+                debug="true"
+                destdir="${basedir}/../../out/production/tij4"
+                srcdir="${basedir}">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+        <echo message="Build 'commons' succeeded"/>
+    </target>
+
+    <target name="AtUnit">
+        <java
+                classname="commons.atunit.AtUnit"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="AtUnitRemover">
+        <java
+                classname="commons.atunit.AtUnitRemover"
+                classpath="${java.class.path};${basedir};${basedir}/../../out/production/tij4:${basedir}/../../lib/javassist.jar"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true">
+            <arg line=".."/>
+        </java>
+    </target>
+
+    <target name="ClassNameFinder">
+        <java
+                classname="commons.atunit.ClassNameFinder"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ContainerMethodDifferences">
+        <java
+                classname="commons.util.ContainerMethodDifferences"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="CountingIntegerList">
+        <java
+                classname="commons.util.CountingIntegerList"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="CountingMapData">
+        <java
+                classname="commons.util.CountingMapData"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Countries">
+        <java
+                classname="commons.util.Countries"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Directory">
+        <java
+                classname="commons.util.Directory"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="Hex">
+        <java
+                classname="commons.util.Hex"
+                classpath="${java.class.path};${basedir};${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="New">
+        <java
+                classname="commons.util.New"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="ProcessFiles">
+        <java
+                classname="commons.util.ProcessFiles"
+                dir="../../out/production/tij4"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target name="TextFile">
+        <java
+                classname="commons.util.TextFile"
+                classpath="${java.class.path};${basedir};${basedir}/../../out/production/tij4"
+                dir="../../"
+                failonerror="true"
+                fork="true"/>
+    </target>
+
+    <target
+            depends="build"
+            description="Compile and run"
+            name="run">
+        <touch file="${basedir}/../../out/production/tij4/commons/failures"/>
+        <antcall target="AtUnitRemover"/>
+        <antcall target="ClassNameFinder"/>
+        <antcall target="ContainerMethodDifferences"/>
+        <antcall target="CountingIntegerList"/>
+        <antcall target="CountingMapData"/>
+        <antcall target="Countries"/>
+        <antcall target="Directory"/>
+        <antcall target="Hex"/>
+        <antcall target="New"/>
+        <antcall target="ProcessFiles"/>
+        <antcall target="TextFile"/>
+        <echo message="* commons.atunit.AtUnit must be run by hand *"/>
+        <!--<delete file="failures"/>-->
+    </target>
+
+    <target description="delete all byproducts" name="clean">
+        <delete>
+            <fileset dir="${basedir}/../../out/production/tij4/commons" includes="**/*.class"/>
+            <fileset dir="${basedir}/../../out/production/tij4/commons" includes="**/*Output.txt"/>
+            <fileset dir="${basedir}/../../out/production/tij4/commons" includes="**/log.txt"/>
+            <fileset dir="${basedir}/../../out/production/tij4/commons" includes="failures"/>
+            <fileset dir="${basedir}/../../out/production/tij4/ch02object" includes="build.xml"/>
+            <dirset dir="${basedir}/../../out/production/tij4/commons"/>
+        </delete>
+        <echo message="clean successful"/>
+    </target>
+
+</project>

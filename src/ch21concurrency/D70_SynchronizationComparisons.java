@@ -259,10 +259,10 @@ public class D70_SynchronizationComparisons {
 	static void test() {
 		print("============================");
 		printf("%-12s : %13d\n", "Cycles", Accumulator.cycles);
-		baseLine.timedTest();
+		//baseLine.timedTest();
 		synch.timedTest();
 		lock.timedTest();
-		atomic.timedTest();
+		//atomic.timedTest();
 		Accumulator.report(synch, baseLine);
 		Accumulator.report(lock, baseLine);
 		Accumulator.report(atomic, baseLine);

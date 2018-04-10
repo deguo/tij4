@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+
+<project basedir="." default="run" name="ch22gui.bangbean">
+
+    <property name="project" value="${basedir}/../../../../../"/>
+    <property name="classes" value="${project}/target/classes"/>
+
+    <condition property="version1.8">
+        <equals arg1="1.8" arg2="${ant.java.version}"/>
+    </condition>
+
+    <target
+            depends=""
+            description="Build all classes in this directory"
+            name="build">
+        <fail message="J2SE8 required" unless="version1.8"/>
+        <echo message="Building 'bangbean'"/>
+        <javac
+                destdir="${classes}"
+                debug="true"
+                srcdir="${basedir}">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+        <echo message="Build 'bangbean' succeeded"/>
+    </target>
+
+    <target name="BangBeanTest">
+        <java
+                classname="ch22gui.bangbean.BangBeanTest"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="5000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
+
+    <target
+            depends="build"
+            description="Compile and run"
+            name="run">
+        <touch file="${classes}/ch22gui/bangbean/failures"/>
+        <antcall target="BangBeanTest"/>
+    </target>
+
+    <target description="delete all byproducts" name="clean">
+        <delete verbose="true" includeemptydirs="true">
+            <fileset dir="${classes}">
+                <include name="**/*"/>
+            </fileset>
+        </delete>
+        <echo message="clean successful"/>
+    </target>
+
+</project>
+
+

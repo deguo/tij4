@@ -1,582 +1,608 @@
 <?xml version="1.0" ?>
+<!--
+project元素是Ant构件文件的根元素，Ant构件文件至少应该包含一个project元素，否则会发生错误。在每个project元素下，可包含多个target元素。
+●name属性：用于指定project元素的名称。
+●default属性：用于指定project默认执行时所执行的target的名称。当运行ant命令时，如果没有指明执行的target，则将执行默认的target（print-dir）
+●basedir属性：用于指定基路径的位置。该属性没有指定时，使用Ant的构件文件的父目录作为基准目录。basedir属性的值为“.”，“.”表示当前目录。
+-->
+<project basedir="." default="run" name="ch22gui" xmlns:artifact="antlib:org.apache.maven.artifact.ant">
 
-<project
- basedir="."
- default="run"
- name="Thinking in Java, 4th Edition by Bruce Eckel (chapter: gui)">
+    <!--描述-->
+    <description>gui</description>
 
+    <!--property元素可看作参量或者参数的定义，task属性通过${xxx}形式引用，ant内置属性包括ant.java.version等-->
+    <property name="project" value="${basedir}/../../../../"/>
+    <property name="classes" value="${project}/target/classes"/>
+    <property name="maven-ant-task"
+              value="C:\Users\Administrator\.m2\repository\org\apache\maven\maven-ant-tasks\2.1.3\maven-ant-tasks-2.1.3.jar"/>
 
-  <condition property="version1.5">
-    <equals arg1="1.5" arg2="${ant.java.version}"/>
-  </condition>
+    <!--ant引用maven依赖，通过maven-ant-task实现-->
+    <path id="maven-ant-tasks.classpath" path="${maven-ant-task}"/>
 
-  <available
-   classname="javax.jnlp.FileOpenService"
-   property="javax.jnlp.FileOpenService"/>
+    <typedef resource="org/apache/maven/artifact/ant/antlib.xml" uri="antlib:org.apache.maven.artifact.ant"
+             classpathref="maven-ant-tasks.classpath"/>
 
-  <target name="net_mindview_util">
-    <javac
-     classpath="${basedir}/.."
-     srcdir="${basedir}/../net/mindview/util/">
-      <compilerarg value="-Xmaxerrs"/>
-      <compilerarg value="10"/>
-    </javac>
-  </target>
+    <!--逻辑判断condition，如果条件值是true，那么变量值就设为默认值true-->
+    <condition property="version1.8">
+        <equals arg1="1.8" arg2="${ant.java.version}"/>
+    </condition>
 
-  <target
-   depends="net_mindview_util"
-   description="Build all classes in this directory"
-   name="build">
-    <fail message="J2SE5 required" unless="version1.5"/>
-    <fail
-     Unless="javax.jnlp.FileOpenService"
-     message="You must have javaws.jar in your classpath"/>
-    <echo message="Building 'gui'"/>
-    <javac
-     classpath="${basedir}/.."
-     debug="true"
-     srcdir="${basedir}">
-      <compilerarg value="-Xmaxerrs"/>
-      <compilerarg value="10"/>
-    </javac>
-    <echo message="Build 'gui' succeeded"/>
-  </target>
+    <!--
+    如果在运行期间一个资源可用，就会设置一个属性，资源可能是文件、目录、classpath中的class或者JVM系统资源。
+    如果资源存在，属性值默认设为true，否则不会设置属性。
+    -->
+    <available
+            classname="javax.jnlp.FileOpenService"
+            classpath="${java.home}\lib\javaws.jar"
+            property="javax.jnlp.FileOpenService"/>
 
-  <target name="BangBean2">
-    <java
-     classname="BangBean2"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <!--
+    target为ant的基本执行单元或是任务，它可以包含一个或多个具体的单元/任务，多个target可以存在相互依赖关系。
+    ●name 属性：指定target元素的名称，这个属性在一个project元素中是唯一的。
+    ●depends 属性：用于描述target之间的依赖关系，若与多个target存在依赖关系时，需要以“,”间隔。Ant会依照depends属性中target出现的顺序依次执行每个target，被依赖的target会先执行。
+    ●if 属性：用于验证指定的属性是存在，若不存在，所在target将不会被执行。
+    ●unless 属性：该属性的功能与if属性的功能正好相反，它也用于验证指定的属性是否存在，若不存在，所在target将会被执行。
+    ●description 属性：该属性是关于target功能的简短描述和说明。
+    -->
+    <target name="commons_util">
+        <!--
+        该标签用于编译一个或一组java文件。
+        ●srcdir表示源程序的目录。
+        ●destdir表示class文件的输出目录。
+        ●include表示被编译的文件的模式。
+        ●excludes表示被排除的文件的模式。
+        ●classpath表示所使用的类路径。
+        ●debug表示包含的调试信息。
+        ●optimize表示是否使用优化。
+        ●verbose 表示提供详细的输出信息。
+        ●fileonerror表示当碰到错误就自动停止。-->
+        <javac
+                destdir="${classes}"
+                srcdir="${basedir}/../commons/util">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+    </target>
 
-  <target name="BeanDumper">
-    <java
-     classname="BeanDumper"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target
+            depends="commons_util"
+            description="Build all classes in this directory"
+            name="build">
 
-  <target name="BorderLayout1">
-    <java
-     classname="BorderLayout1"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+        <!--退出当前的构建（仅仅抛出一个BuildException），可选地打印附加信息-->
+        <fail message="J2SE8 required" unless="version1.8"/>
+        <fail
+                Unless="javax.jnlp.FileOpenService"
+                message="You must have javaws.jar in your classpath"/>
 
-  <target name="Borders">
-    <java
-     classname="Borders"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+        <!--该任务的作用是根据日志或监控器的级别输出信息-->
+        <echo message="Building 'gui'"/>
 
-  <target name="Button1">
-    <java
-     classname="Button1"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+        <artifact:dependencies filesetId="mavenlib" pathId="mavenclasspath" useScope="runtime">
+            <pom file="${project}/pom.xml"/>
+        </artifact:dependencies>
 
-  <target name="Button2">
-    <java
-     classname="Button2"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+        <javac
+                destdir="${classes}"
+                classpath="${java.home}\lib\javaws.jar"
+                debug="true"
+                srcdir="${basedir}"
+                includeantruntime="false"
+        >
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+            <classpath refid="mavenclasspath"/>
+        </javac>
+        <echo message="Build 'gui' succeeded"/>
+    </target>
 
-  <target name="Button2b">
-    <java
-     classname="Button2b"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="BangBean2">
+        <!--
+        该标签用来执行编译生成的.class文件，其属性如下。
+        ●classname 表示将执行的类名。
+        ●jar表示包含该类的JAR文件名。
+        ●classpath所表示用到的类路径。
+        ●fork表示在一个新的虚拟机中运行该类。
+        ●failonerror表示当出现错误时自动停止。
+        ●output 表示输出文件。
+        ●append表示追加或者覆盖默认文件。
+        此处，如果设置dir="${classes}"，则无需设置classpath属性；如果设置classpath="${classes}"，则无需设置dir属性
+        -->
+        <java
+                classname="ch22gui.D42_BangBean2"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="ButtonGroups">
-    <java
-     classname="ButtonGroups"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="BeanDumper">
+        <java
+                classname="ch22gui.D41_BeanDumper"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="Buttons">
-    <java
-     classname="Buttons"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="BorderLayout1">
+        <java
+                classname="ch22gui.D09_BorderLayout1"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="CheckBoxes">
-    <java
-     classname="CheckBoxes"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="Borders">
+        <java
+                classname="ch22gui.D18_Borders"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="ColorBoxes">
-    <java
-     classname="ColorBoxes"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="Button1">
+        <java
+                classname="ch22gui.D05_Button1"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="ComboBoxes">
-    <java
-     classname="ComboBoxes"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="Button2">
+        <java
+                classname="ch22gui.D06_Button2"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="Dialogs">
-    <java
-     classname="Dialogs"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="Button2b">
+        <java
+                classname="ch22gui.D07_Button2b"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="Faces">
-    <java
-     classname="Faces"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="ButtonGroups">
+        <java
+                classname="ch22gui.D15_ButtonGroups"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="FileChooserTest">
-    <java
-     classname="FileChooserTest"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="Buttons">
+        <java
+                classname="ch22gui.D14_Buttons"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="FlowLayout1">
-    <java
-     classname="FlowLayout1"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="CheckBoxes">
+        <java
+                classname="ch22gui.D20_CheckBoxes"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="GridLayout1">
-    <java
-     classname="GridLayout1"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="ColorBoxes">
+        <java
+                classname="ch22gui.D40_ColorBoxes"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="HelloLabel">
-    <java
-     classname="HelloLabel"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="ComboBoxes">
+        <java
+                classname="ch22gui.D22_ComboBoxes"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="HelloSwing">
-    <java
-     classname="HelloSwing"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="Dialogs">
+        <java
+                classname="ch22gui.D30_Dialogs"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="HTMLButton">
-    <java
-     classname="HTMLButton"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="Faces">
+        <java
+                classname="ch22gui.D16_Faces"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="InterruptableLongRunningCallable">
-    <java
-     classname="InterruptableLongRunningCallable"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="FileChooserTest">
+        <java
+                classname="ch22gui.D32_FileChooserTest"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="InterruptableLongRunningTask">
-    <java
-     classname="InterruptableLongRunningTask"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="FlowLayout1">
+        <java
+                classname="ch22gui.D10_FlowLayout1"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="List">
-    <java
-     classname="List"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="GridLayout1">
+        <java
+                classname="ch22gui.D11_GridLayout1"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="LongRunningTask">
-    <java
-     classname="LongRunningTask"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="HelloLabel">
+        <java
+                classname="ch22gui.D02_HelloLabel"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="LookAndFeel">
-    <java
-     classname="LookAndFeel"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000">
-      <arg line="motif"/>
-    </java>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="HelloSwing">
+        <java
+                classname="ch22gui.D01_HelloSwing"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="Menus">
-    <java
-     classname="Menus"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="HTMLButton">
+        <java
+                classname="ch22gui.D33_HTMLButton"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="MessageBoxes">
-    <java
-     classname="MessageBoxes"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="InterruptableLongRunningCallable">
+        <java
+                classname="ch22gui.D38_InterruptableLongRunningCallable"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="MonitoredLongRunningCallable">
-    <java
-     classname="MonitoredLongRunningCallable"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="InterruptableLongRunningTask">
+        <java
+                classname="ch22gui.D37_InterruptableLongRunningTask"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="Popup">
-    <java
-     classname="Popup"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="List">
+        <java
+                classname="ch22gui.D23_List"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="Progress">
-    <java
-     classname="Progress"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="LongRunningTask">
+        <java
+                classname="ch22gui.D36_LongRunningTask"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="RadioButtons">
-    <java
-     classname="RadioButtons"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="LookAndFeel">
+        <java
+                classname="ch22gui.D35_LookAndFeel"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000">
+            <arg line="motif"/>
+        </java>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="ShowAddListeners">
-    <java
-     classname="ShowAddListeners"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="Menus">
+        <java
+                classname="ch22gui.D27_Menus"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="SimpleMenus">
-    <java
-     classname="SimpleMenus"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="MessageBoxes">
+        <java
+                classname="ch22gui.D25_MessageBoxes"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="SineWave">
-    <java
-     classname="SineWave"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="MonitoredLongRunningCallable">
+        <java
+                classname="ch22gui.D39_MonitoredLongRunningCallable"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="SubmitLabelManipulationTask">
-    <java
-     classname="SubmitLabelManipulationTask"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="Popup">
+        <java
+                classname="ch22gui.D28_Popup"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="SubmitSwingProgram">
-    <java
-     classname="SubmitSwingProgram"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="Progress">
+        <java
+                classname="ch22gui.D34_Progress"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="TabbedPane1">
-    <java
-     classname="TabbedPane1"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="RadioButtons">
+        <java
+                classname="ch22gui.D21_RadioButtons"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="TextArea">
-    <java
-     classname="TextArea"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="ShowAddListeners">
+        <java
+                classname="ch22gui.D12_ShowAddListeners"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="TextFields">
-    <java
-     classname="TextFields"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="SimpleMenus">
+        <java
+                classname="ch22gui.D26_SimpleMenus"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="TextPane">
-    <java
-     classname="TextPane"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="SineWave">
+        <java
+                classname="ch22gui.D29_SineWave"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="TicTacToe">
-    <java
-     classname="TicTacToe"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="SubmitLabelManipulationTask">
+        <java
+                classname="ch22gui.D03_SubmitLabelManipulationTask"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="TrackEvent">
-    <java
-     classname="TrackEvent"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="SubmitSwingProgram">
+        <java
+                classname="ch22gui.D04_SubmitSwingProgram"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target name="JnlpFileChooser">
-    <java
-     classname="gui.jnlp.JnlpFileChooser"
-     classpath="${java.class.path};${basedir};${basedir}/.."
-     dir="../gui/jnlp/"
-     failonerror="false"
-     fork="true"
-     timeout="4000"/>
-    <echo message="* Exception was expected *"/>
-  </target>
+    <target name="TabbedPane1">
+        <java
+                classname="ch22gui.D24_TabbedPane1"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target
-   depends="build"
-   description="Compile and run"
-   name="run">
-    <touch file="failures"/>
-    <antcall target="BangBean2"/>
-    <antcall target="BeanDumper"/>
-    <antcall target="BorderLayout1"/>
-    <antcall target="Borders"/>
-    <antcall target="Button1"/>
-    <antcall target="Button2"/>
-    <antcall target="Button2b"/>
-    <antcall target="ButtonGroups"/>
-    <antcall target="Buttons"/>
-    <antcall target="CheckBoxes"/>
-    <antcall target="ColorBoxes"/>
-    <antcall target="ComboBoxes"/>
-    <antcall target="Dialogs"/>
-    <antcall target="Faces"/>
-    <antcall target="FileChooserTest"/>
-    <antcall target="FlowLayout1"/>
-    <antcall target="GridLayout1"/>
-    <antcall target="HelloLabel"/>
-    <antcall target="HelloSwing"/>
-    <antcall target="HTMLButton"/>
-    <antcall target="InterruptableLongRunningCallable"/>
-    <antcall target="InterruptableLongRunningTask"/>
-    <antcall target="List"/>
-    <antcall target="LongRunningTask"/>
-    <antcall target="LookAndFeel"/>
-    <antcall target="Menus"/>
-    <antcall target="MessageBoxes"/>
-    <antcall target="MonitoredLongRunningCallable"/>
-    <antcall target="Popup"/>
-    <antcall target="Progress"/>
-    <antcall target="RadioButtons"/>
-    <antcall target="ShowAddListeners"/>
-    <antcall target="SimpleMenus"/>
-    <antcall target="SineWave"/>
-    <antcall target="SubmitLabelManipulationTask"/>
-    <antcall target="SubmitSwingProgram"/>
-    <antcall target="TabbedPane1"/>
-    <antcall target="TextArea"/>
-    <antcall target="TextFields"/>
-    <antcall target="TextPane"/>
-    <antcall target="TicTacToe"/>
-    <antcall target="TrackEvent"/>
-    <antcall target="JnlpFileChooser"/>
-    <delete file="failures"/>
-  </target>
+    <target name="TextArea">
+        <java
+                classname="ch22gui.D08_TextArea"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
 
-  <target description="delete all byproducts" name="clean">
-    <delete>
-      <fileset dir="${basedir}" includes="**/*.class"/>
-      <fileset dir="${basedir}" includes="**/*Output.txt"/>
-      <fileset dir="${basedir}" includes="**/log.txt"/>
-      <fileset dir="${basedir}" includes="failures"/>
-    </delete>
-    <echo message="clean successful"/>
-  </target>
+    <target name="TextFields">
+        <java
+                classname="ch22gui.D17_TextFields"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
+
+    <target name="TextPane">
+        <java
+                classname="ch22gui.D19_TextPane"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
+
+    <target name="TicTacToe">
+        <java
+                classname="ch22gui.D31_TicTacToe"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
+
+    <target name="TrackEvent">
+        <java
+                classname="ch22gui.D13_TrackEvent"
+                classpath="${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
+
+    <target name="JnlpFileChooser">
+        <java
+                classname="ch22gui.jnlp.JnlpFileChooser"
+                classpath="${java.class.path};${java.home}\lib\javaws.jar;${classes}"
+                failonerror="false"
+                fork="true"
+                timeout="4000"/>
+        <echo message="* Exception was expected *"/>
+    </target>
+
+    <target
+            depends="build"
+            description="Compile and run"
+            name="run">
+        <!--touch用于更改资源的修改时间，并可能同时创建它。-->
+        <touch file="${classes}/ch22gui/failures"/>
+
+        <!--AntCall任务的作用是允许在一个target的执行过程中调用并执行其他的target。-->
+        <antcall target="BangBean2"/>
+        <antcall target="BeanDumper"/>
+        <antcall target="BorderLayout1"/>
+        <antcall target="Borders"/>
+        <antcall target="Button1"/>
+        <antcall target="Button2"/>
+        <antcall target="Button2b"/>
+        <antcall target="ButtonGroups"/>
+        <antcall target="Buttons"/>
+        <antcall target="CheckBoxes"/>
+        <antcall target="ColorBoxes"/>
+        <antcall target="ComboBoxes"/>
+        <antcall target="Dialogs"/>
+        <antcall target="Faces"/>
+        <antcall target="FileChooserTest"/>
+        <antcall target="FlowLayout1"/>
+        <antcall target="GridLayout1"/>
+        <antcall target="HelloLabel"/>
+        <antcall target="HelloSwing"/>
+        <antcall target="HTMLButton"/>
+        <antcall target="InterruptableLongRunningCallable"/>
+        <antcall target="InterruptableLongRunningTask"/>
+        <antcall target="List"/>
+        <antcall target="LongRunningTask"/>
+        <antcall target="LookAndFeel"/>
+        <antcall target="Menus"/>
+        <antcall target="MessageBoxes"/>
+        <antcall target="MonitoredLongRunningCallable"/>
+        <antcall target="Popup"/>
+        <antcall target="Progress"/>
+        <antcall target="RadioButtons"/>
+        <antcall target="ShowAddListeners"/>
+        <antcall target="SimpleMenus"/>
+        <antcall target="SineWave"/>
+        <antcall target="SubmitLabelManipulationTask"/>
+        <antcall target="SubmitSwingProgram"/>
+        <antcall target="TabbedPane1"/>
+        <antcall target="TextArea"/>
+        <antcall target="TextFields"/>
+        <antcall target="TextPane"/>
+        <antcall target="TicTacToe"/>
+        <antcall target="TrackEvent"/>
+        <antcall target="JnlpFileChooser"/>
+        <!--<delete file="failures"/>-->
+    </target>
+
+    <target description="delete all byproducts" name="clean">
+        <!--对文件或目录进行删除，此处删除文件夹下所有内容，文件夹本身不会被删除-->
+        <!--<delete dir="${classes}"/>-->
+        <delete verbose="true" includeemptydirs="true">
+            <fileset dir="${classes}">
+                <include name="**/*"/>
+            </fileset>
+        </delete>
+        <echo message="clean successful"/>
+    </target>
 
 </project>
 

@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+
+<project basedir="." default="run" name="ch22gui.frogbean">
+
+    <property name="project" value="${basedir}/../../../../../"/>
+    <property name="classes" value="${project}/target/classes"/>
+
+    <condition property="version1.8">
+        <equals arg1="1.8" arg2="${ant.java.version}"/>
+    </condition>
+
+    <target
+            depends=""
+            description="Build all classes in this directory"
+            name="build">
+        <fail message="J2SE8 required" unless="version1.8"/>
+        <echo message="Building 'frogbean'"/>
+        <javac
+                destdir="${classes}"
+                debug="true"
+                srcdir="${basedir}">
+            <compilerarg value="-Xmaxerrs"/>
+            <compilerarg value="10"/>
+        </javac>
+        <echo message="Build 'frogbean' succeeded"/>
+    </target>
+
+    <target
+            depends="build"
+            description="Compile and run"
+            name="run">
+        <touch file="${classes}/ch22gui/frogbean/failures"/>
+    </target>
+
+    <target description="delete all byproducts" name="clean">
+        <delete verbose="true" includeemptydirs="true">
+            <fileset dir="${classes}">
+                <include name="**/*"/>
+            </fileset>
+        </delete>
+        <echo message="clean successful"/>
+    </target>
+
+</project>
+
+

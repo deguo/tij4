@@ -18,6 +18,6 @@ public class D06_BufferedInputFile {
 	}
 
 	public static void main(String[] args) throws IOException {
-		System.out.print(read("src/ch18io/D06_BufferedInputFile.java"));
+		System.out.print(read("src/main/java/ch18io/D06_BufferedInputFile.java"));
 	}
 }

@@ -2,6 +2,8 @@
 
 <project basedir="." default="run" name="ch08polymorphism">
 
+    <property name="project" value="${basedir}/../../../../"/>
+    <property name="classes" value="${project}/target/classes"/>
 
     <condition property="version1.8">
         <equals arg1="1.8" arg2="${ant.java.version}"/>
@@ -9,7 +11,7 @@
 
     <target name="commons_util">
         <javac
-                destdir="${basedir}/../../out/production/tij4"
+                destdir="${classes}"
                 srcdir="${basedir}/../commons/util">
             <compilerarg value="-Xmaxerrs"/>
             <compilerarg value="10"/>
@@ -18,7 +20,7 @@
 
     <target name="polymorphism_music">
         <javac
-                destdir="${basedir}/../../out/production/tij4"
+                destdir="${classes}"
                 srcdir="${basedir}/../ch08polymorphism/music/">
             <compilerarg value="-Xmaxerrs"/>
             <compilerarg value="10"/>
@@ -32,7 +34,7 @@
         <fail message="J2SE8 required" unless="version1.8"/>
         <echo message="Building 'polymorphism'"/>
         <javac
-                destdir="${basedir}/../../out/production/tij4"
+                destdir="${classes}"
                 debug="true"
                 srcdir="${basedir}">
             <exclude name="exercise/**/*.java"/>
@@ -45,7 +47,7 @@
     <target name="CovariantReturn">
         <java
                 classname="ch08polymorphism.D12_CovariantReturn"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -53,7 +55,7 @@
     <target name="FieldAccess">
         <java
                 classname="ch08polymorphism.D06_FieldAccess"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -61,7 +63,7 @@
     <target name="Frog">
         <java
                 classname="ch08polymorphism.D09_Frog"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -69,7 +71,7 @@
     <target name="PolyConstructors">
         <java
                 classname="ch08polymorphism.D11_PolyConstructors"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -77,7 +79,7 @@
     <target name="PrivateOverride">
         <java
                 classname="ch08polymorphism.D05_PrivateOverride"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -85,7 +87,7 @@
     <target name="ReferenceCounting">
         <java
                 classname="ch08polymorphism.D10_ReferenceCounting"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -93,7 +95,7 @@
     <target name="RTTI">
         <java
                 classname="ch08polymorphism.D14_RTTI"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="false"
                 fork="true"/>
         <echo message="* Exception was expected *"/>
@@ -102,7 +104,7 @@
     <target name="Sandwich">
         <java
                 classname="ch08polymorphism.D08_Sandwich"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -110,7 +112,7 @@
     <target name="Shapes">
         <java
                 classname="ch08polymorphism.D03_Shapes"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -118,7 +120,7 @@
     <target name="StaticPolymorphism">
         <java
                 classname="ch08polymorphism.D07_StaticPolymorphism"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -126,7 +128,7 @@
     <target name="Transmogrify">
         <java
                 classname="ch08polymorphism.D13_Transmogrify"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -134,7 +136,7 @@
     <target name="Music">
         <java
                 classname="ch08polymorphism.music.D01_Music"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -142,7 +144,7 @@
     <target name="Music2">
         <java
                 classname="ch08polymorphism.music.D02_Music2"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -150,7 +152,7 @@
     <target name="Music3">
         <java
                 classname="ch08polymorphism.music3.D04_Music3"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -159,7 +161,7 @@
             depends="build"
             description="Compile and run"
             name="run">
-        <touch file="${basedir}/../../out/production/tij4/ch08polymorphism/failures"/>
+        <touch file="${classes}/ch08polymorphism/failures"/>
         <antcall target="CovariantReturn"/>
         <antcall target="FieldAccess"/>
         <antcall target="Frog"/>
@@ -174,17 +176,13 @@
         <antcall target="Music"/>
         <antcall target="Music2"/>
         <antcall target="Music3"/>
-        <!--<delete file="failures"/>-->
     </target>
 
     <target description="delete all byproducts" name="clean">
-        <delete>
-            <fileset dir="${basedir}/../../out/production/tij4/ch08polymorphism" includes="**/*.class"/>
-            <fileset dir="${basedir}/../../out/production/tij4/ch08polymorphism" includes="**/*Output.txt"/>
-            <fileset dir="${basedir}/../../out/production/tij4/ch08polymorphism" includes="**/log.txt"/>
-            <fileset dir="${basedir}/../../out/production/tij4/ch08polymorphism" includes="failures"/>
-            <fileset dir="${basedir}/../../out/production/tij4/ch08polymorphism" includes="build.xml"/>
-            <dirset dir="${basedir}/../../out/production/tij4/ch08polymorphism"/>
+        <delete verbose="true" includeemptydirs="true">
+            <fileset dir="${classes}">
+                <include name="**/*"/>
+            </fileset>
         </delete>
         <echo message="clean successful"/>
     </target>

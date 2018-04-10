@@ -2,13 +2,16 @@
 
 <project basedir="." default="run" name="ch14typeinfo)">
 
+    <property name="project" value="${basedir}/../../../../"/>
+    <property name="classes" value="${project}/target/classes"/>
+
     <condition property="version1.8">
         <equals arg1="1.8" arg2="${ant.java.version}"/>
     </condition>
 
     <target name="typeinfo_pets">
         <javac
-                destdir="${basedir}/../../out/production/tij4"
+                destdir="${classes}"
                 srcdir="${basedir}/../ch14typeinfo/pets/">
             <compilerarg value="-Xmaxerrs"/>
             <compilerarg value="10"/>
@@ -17,7 +20,7 @@
 
     <target name="commons_util">
         <javac
-                destdir="${basedir}/../../out/production/tij4"
+                destdir="${classes}"
                 srcdir="${basedir}/../commons/util">
             <compilerarg value="-Xmaxerrs"/>
             <compilerarg value="10"/>
@@ -31,7 +34,7 @@
         <fail message="J2SE8 required" unless="version1.8"/>
         <echo message="Building 'strings'"/>
         <javac
-                destdir="${basedir}/../../out/production/tij4"
+                destdir="${classes}"
                 debug="true"
                 srcdir="${basedir}">
             <compilerarg value="-Xmaxerrs"/>
@@ -43,7 +46,7 @@
     <target name="AnonymousImplementation">
         <java
                 classname="ch14typeinfo.D28_AnonymousImplementation"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -51,7 +54,7 @@
     <target name="BoundedClassReferences">
         <java
                 classname="ch14typeinfo.D07_BoundedClassReferences"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -59,7 +62,7 @@
     <target name="ClassCasts">
         <java
                 classname="ch14typeinfo.D10_ClassCasts"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -67,7 +70,7 @@
     <target name="ClassInitialization">
         <java
                 classname="ch14typeinfo.D04_ClassInitialization"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -75,7 +78,7 @@
     <target name="FamilyVsExactType">
         <java
                 classname="ch14typeinfo.D17_FamilyVsExactType"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -83,7 +86,7 @@
     <target name="FilledList">
         <java
                 classname="ch14typeinfo.D08_FilledList"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -91,7 +94,7 @@
     <target name="GenericClassReferences">
         <java
                 classname="ch14typeinfo.D05_GenericClassReferences"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -99,7 +102,7 @@
     <target name="HiddenImplementation">
         <java
                 classname="ch14typeinfo.D26_HiddenImplementation"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -107,7 +110,7 @@
     <target name="InnerImplementation">
         <java
                 classname="ch14typeinfo.D27_InnerImplementation"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -115,7 +118,7 @@
     <target name="InterfaceViolation">
         <java
                 classname="ch14typeinfo.D25_InterfaceViolation"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -123,7 +126,7 @@
     <target name="ModifyingPrivateFields">
         <java
                 classname="ch14typeinfo.D29_ModifyingPrivateFields"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -131,7 +134,7 @@
     <target name="NullRobot">
         <java
                 classname="ch14typeinfo.D24_NullRobot"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -139,7 +142,7 @@
     <target name="PetCount">
         <java
                 classname="ch14typeinfo.D11_PetCount"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -147,7 +150,7 @@
     <target name="PetCount2">
         <java
                 classname="ch14typeinfo.D13_PetCount2"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -155,7 +158,7 @@
     <target name="PetCount3">
         <java
                 classname="ch14typeinfo.D14_PetCount3"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -163,7 +166,7 @@
     <target name="PetCount4">
         <java
                 classname="ch14typeinfo.D15_PetCount4"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -171,7 +174,7 @@
     <target name="RegisteredFactories">
         <java
                 classname="ch14typeinfo.D16_RegisteredFactories"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -179,7 +182,7 @@
     <target name="SelectingMethods">
         <java
                 classname="ch14typeinfo.D21_SelectingMethods"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -187,7 +190,7 @@
     <target name="Shapes">
         <java
                 classname="ch14typeinfo.D01_Shapes"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -195,7 +198,7 @@
     <target name="ShowMethods">
         <java
                 classname="ch14typeinfo.D18_ShowMethods"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true">
             <arg line="ShowMethods"/>
@@ -205,7 +208,7 @@
     <target name="SimpleDynamicProxy">
         <java
                 classname="ch14typeinfo.D20_SimpleDynamicProxy"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -213,7 +216,7 @@
     <target name="SimpleProxyDemo">
         <java
                 classname="ch14typeinfo.D19_SimpleProxyDemo"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -221,7 +224,7 @@
     <target name="SnowRemovalRobot">
         <java
                 classname="ch14typeinfo.D23_SnowRemovalRobot"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -229,7 +232,7 @@
     <target name="Staff">
         <java
                 classname="ch14typeinfo.D22_Staff"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -237,7 +240,7 @@
     <target name="SweetShop">
         <java
                 classname="ch14typeinfo.D02_SweetShop"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -245,7 +248,7 @@
     <target name="WildcardClassReferences">
         <java
                 classname="ch14typeinfo.D06_WildcardClassReferences"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -253,7 +256,7 @@
     <target name="LiteralPetCreator">
         <java
                 classname="ch14typeinfo.pets.D12_LiteralPetCreator"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -261,7 +264,7 @@
     <target name="GenericToyTest">
         <java
                 classname="ch14typeinfo.toys.D09_GenericToyTest"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -269,7 +272,7 @@
     <target name="ToyTest">
         <java
                 classname="ch14typeinfo.toys.D03_ToyTest"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -278,7 +281,7 @@
             depends="build"
             description="Compile and run"
             name="run">
-        <touch file="${basedir}/../../out/production/tij4/ch14typeinfo/failures"/>
+        <touch file="${classes}/ch14typeinfo/failures"/>
         <antcall target="AnonymousImplementation"/>
         <antcall target="BoundedClassReferences"/>
         <antcall target="ClassCasts"/>
@@ -308,17 +311,13 @@
         <antcall target="LiteralPetCreator"/>
         <antcall target="GenericToyTest"/>
         <antcall target="ToyTest"/>
-        <!--<delete file="failures"/>-->
     </target>
 
     <target description="delete all byproducts" name="clean">
-        <delete>
-            <fileset dir="${basedir}/../../out/production/tij4/ch14typeinfo" includes="**/*.class"/>
-            <fileset dir="${basedir}/../../out/production/tij4/ch14typeinfo" includes="**/*Output.txt"/>
-            <fileset dir="${basedir}/../../out/production/tij4/ch14typeinfo" includes="**/log.txt"/>
-            <fileset dir="${basedir}/../../out/production/tij4/ch14typeinfo" includes="failures"/>
-            <fileset dir="${basedir}/../../out/production/tij4/ch14typeinfo" includes="build.xml"/>
-            <dirset dir="${basedir}/../../out/production/tij4/ch14typeinfo"/>
+        <delete verbose="true" includeemptydirs="true">
+            <fileset dir="${classes}">
+                <include name="**/*"/>
+            </fileset>
         </delete>
         <echo message="clean successful"/>
     </target>

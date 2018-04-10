@@ -11,7 +11,7 @@ import commons.util.*;
  */
 public class D18_UniqueWords {
 	public static void main(String[] args) {
-		Set<String> words = new TreeSet<String>(new TextFile("src/ch11holding/D17_SetOperations.java", "\\W+"));
+		Set<String> words = new TreeSet<String>(new TextFile("src/main/java/ch11holding/D17_SetOperations.java", "\\W+"));
 		System.out.println(words);
 	}
 }

@@ -2,13 +2,16 @@
 
 <project basedir="." default="run" name="ch10innerclasses">
 
+    <property name="project" value="${basedir}/../../../../"/>
+    <property name="classes" value="${project}/target/classes"/>
+
     <condition property="version1.8">
         <equals arg1="1.8" arg2="${ant.java.version}"/>
     </condition>
 
     <target name="commons_util">
         <javac
-                destdir="${basedir}/../../out/production/tij4"
+                destdir="${classes}"
                 srcdir="${basedir}/../commons/util">
             <compilerarg value="-Xmaxerrs"/>
             <compilerarg value="10"/>
@@ -22,7 +25,7 @@
         <fail message="J2SE8 required" unless="version1.8"/>
         <echo message="Building 'innerclasses'"/>
         <javac
-                destdir="${basedir}/../../out/production/tij4"
+                destdir="${classes}"
                 debug="true"
                 srcdir="${basedir}">
             <exclude name="exercise/**/*.java"/>
@@ -35,7 +38,7 @@
     <target name="AnonymousConstructor">
         <java
                 classname="ch10innerclasses.D14_AnonymousConstructor"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -43,7 +46,7 @@
     <target name="BigEgg">
         <java
                 classname="ch10innerclasses.D29_BigEgg"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -51,7 +54,7 @@
     <target name="BigEgg2">
         <java
                 classname="ch10innerclasses.D30_BigEgg2"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -59,7 +62,7 @@
     <target name="Callbacks">
         <java
                 classname="ch10innerclasses.D24_Callbacks"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -67,7 +70,7 @@
     <target name="ClassInInterface">
         <java
                 classname="ch10innerclasses.D19_ClassInInterface$Test"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -75,7 +78,7 @@
     <target name="DotNew">
         <java
                 classname="ch10innerclasses.D05_DotNew"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -83,7 +86,7 @@
     <target name="DotThis">
         <java
                 classname="ch10innerclasses.D04_DotThis"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -91,7 +94,7 @@
     <target name="Factories">
         <java
                 classname="ch10innerclasses.D16_Factories"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -99,7 +102,7 @@
     <target name="Games">
         <java
                 classname="ch10innerclasses.D17_Games"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -107,7 +110,7 @@
     <target name="GreenhouseController">
         <java
                 classname="ch10innerclasses.D27_GreenhouseController"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true">
             <arg line="5000"/>
@@ -117,7 +120,7 @@
     <target name="InheritInner">
         <java
                 classname="ch10innerclasses.D28_InheritInner"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -125,7 +128,7 @@
     <target name="LocalInnerClass">
         <java
                 classname="ch10innerclasses.D31_LocalInnerClass"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -133,7 +136,7 @@
     <target name="MultiImplementation">
         <java
                 classname="ch10innerclasses.D23_MultiImplementation"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -141,7 +144,7 @@
     <target name="MultiInterfaces">
         <java
                 classname="ch10innerclasses.D22_MultiInterfaces"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -149,7 +152,7 @@
     <target name="MultiNestingAccess">
         <java
                 classname="ch10innerclasses.D21_MultiNestingAccess"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -157,7 +160,7 @@
     <target name="Parcel1">
         <java
                 classname="ch10innerclasses.D01_Parcel1"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -165,7 +168,7 @@
     <target name="Parcel10">
         <java
                 classname="ch10innerclasses.D15_Parcel10"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -173,7 +176,7 @@
     <target name="Parcel11">
         <java
                 classname="ch10innerclasses.D18_Parcel11"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -181,7 +184,7 @@
     <target name="Parcel2">
         <java
                 classname="ch10innerclasses.D02_Parcel2"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -189,7 +192,7 @@
     <target name="Parcel3">
         <java
                 classname="ch10innerclasses.D06_Parcel3"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -197,7 +200,7 @@
     <target name="Parcel5">
         <java
                 classname="ch10innerclasses.D08_Parcel5"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -205,7 +208,7 @@
     <target name="Parcel6">
         <java
                 classname="ch10innerclasses.D09_Parcel6"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -213,7 +216,7 @@
     <target name="Parcel7">
         <java
                 classname="ch10innerclasses.D10_Parcel7"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -221,7 +224,7 @@
     <target name="Parcel7b">
         <java
                 classname="ch10innerclasses.D11_Parcel7b"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -229,7 +232,7 @@
     <target name="Parcel8">
         <java
                 classname="ch10innerclasses.D12_Parcel8"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -237,7 +240,7 @@
     <target name="Parcel9">
         <java
                 classname="ch10innerclasses.D13_Parcel9"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -245,7 +248,7 @@
     <target name="Sequence">
         <java
                 classname="ch10innerclasses.D03_Sequence"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -253,7 +256,7 @@
     <target name="TestBed">
         <java
                 classname="ch10innerclasses.D20_TestBed$Tester"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -261,7 +264,7 @@
     <target name="TestParcel">
         <java
                 classname="ch10innerclasses.D07_TestParcel"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -270,7 +273,7 @@
             depends="build"
             description="Compile and run"
             name="run">
-        <touch file="${basedir}/../../out/production/tij4/ch10innerclasses/failures"/>
+        <touch file="${classes}/ch10innerclasses/failures"/>
         <antcall target="AnonymousConstructor"/>
         <antcall target="BigEgg"/>
         <antcall target="BigEgg2"/>
@@ -300,17 +303,13 @@
         <antcall target="Sequence"/>
         <antcall target="TestBed"/>
         <antcall target="TestParcel"/>
-        <!--<delete file="failures"/>-->
     </target>
 
     <target description="delete all byproducts" name="clean">
-        <delete>
-            <fileset dir="${basedir}/../../out/production/tij4/ch10innerclasses" includes="**/*.class"/>
-            <fileset dir="${basedir}/../../out/production/tij4/ch10innerclasses" includes="**/*Output.txt"/>
-            <fileset dir="${basedir}/../../out/production/tij4/ch10innerclasses" includes="**/log.txt"/>
-            <fileset dir="${basedir}/../../out/production/tij4/ch10innerclasses" includes="failures"/>
-            <fileset dir="${basedir}/../../out/production/tij4/ch10innerclasses" includes="build.xml"/>
-            <dirset dir="${basedir}/../../out/production/tij4/ch10innerclasses"/>
+        <delete verbose="true" includeemptydirs="true">
+            <fileset dir="${classes}">
+                <include name="**/*"/>
+            </fileset>
         </delete>
         <echo message="clean successful"/>
     </target>

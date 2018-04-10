@@ -34,7 +34,7 @@ public class Hex {
 	public static void main(String[] args) throws Exception {
 		if (args.length == 0)
 			// Test by displaying this class file:
-			System.out.println(format(BinaryFile.read("./out/production/tij4/commons/util/Hex.class")));
+			System.out.println(format(BinaryFile.read("target/classes/commons/util/Hex.class")));
 		else
 			System.out.println(format(BinaryFile.read(new File(args[0]))));
 	}

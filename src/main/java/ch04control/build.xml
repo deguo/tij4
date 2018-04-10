@@ -2,14 +2,16 @@
 
 <project basedir="." default="run" name="ch04control">
 
+    <property name="project" value="${basedir}/../../../../"/>
+    <property name="classes" value="${project}/target/classes"/>
+
     <condition property="version1.8">
         <equals arg1="1.8" arg2="${ant.java.version}"/>
     </condition>
 
     <target name="commons_util">
         <javac
-                classpath="${basedir}/.."
-                destdir="${basedir}/../../out/production/tij4"
+                destdir="${classes}"
                 srcdir="${basedir}/../commons/util">
             <compilerarg value="-Xmaxerrs"/>
             <compilerarg value="10"/>
@@ -20,9 +22,8 @@
         <fail message="J2SE8 required" unless="version1.8"/>
         <echo message="Building 'control'"/>
         <javac
-                classpath="${basedir}/.."
+                destdir="${classes}"
                 debug="true"
-                destdir="${basedir}/../../out/production/tij4"
                 srcdir="${basedir}">
             <exclude name="exercise/*.java"/>
             <compilerarg value="-Xmaxerrs"/>
@@ -34,7 +35,7 @@
     <target name="BreakAndContinue">
         <java
                 classname="ch04control.D09_BreakAndContinue"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -42,7 +43,7 @@
     <target name="CommaOperator">
         <java
                 classname="ch04control.D04_CommaOperator"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -50,7 +51,7 @@
     <target name="ForEachFloat">
         <java
                 classname="ch04control.D05_ForEachFloat"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -58,7 +59,7 @@
     <target name="ForEachInt">
         <java
                 classname="ch04control.D07_ForEachInt"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -66,7 +67,7 @@
     <target name="ForEachString">
         <java
                 classname="ch04control.D06_ForEachString"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -74,7 +75,7 @@
     <target name="IfElse">
         <java
                 classname="ch04control.D01_IfElse"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -82,7 +83,7 @@
     <target name="IfElse2">
         <java
                 classname="ch04control.D08_IfElse2"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -90,7 +91,7 @@
     <target name="LabeledFor">
         <java
                 classname="ch04control.D10_LabeledFor"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -98,7 +99,7 @@
     <target name="LabeledWhile">
         <java
                 classname="ch04control.D11_LabeledWhile"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -106,7 +107,7 @@
     <target name="ListCharacters">
         <java
                 classname="ch04control.D03_ListCharacters"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -114,7 +115,7 @@
     <target name="VowelsAndConsonants">
         <java
                 classname="ch04control.D12_VowelsAndConsonants"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -122,7 +123,7 @@
     <target name="WhileTest">
         <java
                 classname="ch04control.D02_WhileTest"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -131,7 +132,7 @@
             depends="build"
             description="Compile and run"
             name="run">
-        <touch file="${basedir}/../../out/production/tij4/ch04control/failures"/>
+        <touch file="${classes}/ch04control/failures"/>
         <antcall target="BreakAndContinue"/>
         <antcall target="CommaOperator"/>
         <antcall target="ForEachFloat"/>
@@ -144,17 +145,13 @@
         <antcall target="ListCharacters"/>
         <antcall target="VowelsAndConsonants"/>
         <antcall target="WhileTest"/>
-        <!--<delete file="failures"/>-->
     </target>
 
     <target description="delete all byproducts" name="clean">
-        <delete>
-            <fileset dir="${basedir}/../../out/production/tij4/ch04control" includes="**/*.class"/>
-            <fileset dir="${basedir}/../../out/production/tij4/ch04control" includes="**/*Output.txt"/>
-            <fileset dir="${basedir}/../../out/production/tij4/ch04control" includes="**/log.txt"/>
-            <fileset dir="${basedir}/../../out/production/tij4/ch04control" includes="failures"/>
-            <fileset dir="${basedir}/../../out/production/tij4/ch04control" includes="build.xml"/>
-            <dirset dir="${basedir}/../../out/production/tij4/ch04control"/>
+        <delete verbose="true" includeemptydirs="true">
+            <fileset dir="${classes}">
+                <include name="**/*"/>
+            </fileset>
         </delete>
         <echo message="clean successful"/>
     </target>

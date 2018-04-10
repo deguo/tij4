@@ -2,7 +2,8 @@
 
 <project basedir="." default="run" name="ch02object">
 
-    <description>描述</description>
+    <property name="project" value="${basedir}/../../../../"/>
+    <property name="classes" value="${project}/target/classes"/>
 
     <condition property="version1.8">
         <equals arg1="1.8" arg2="${ant.java.version}"/>
@@ -12,9 +13,8 @@
         <fail message="J2SE8 required" unless="version1.8"/>
         <echo message="Building 'object'"/>
         <javac
-                classpath="${basedir}/.."
+                destdir="${classes}"
                 debug="true"
-                destdir="${basedir}/../../out/production/tij4"
                 srcdir="${basedir}">
             <exclude name="exercise/*.java"/>
             <compilerarg value="-Xmaxerrs"/>
@@ -26,8 +26,7 @@
     <target name="HelloDate">
         <java
                 classname="ch02object.D01_HelloDate"
-                classpath="${java.class.path};${basedir};${basedir}/../../out/production/tij4"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -35,27 +34,22 @@
     <target name="ShowProperties">
         <java
                 classname="ch02object.D02_ShowProperties"
-                classpath="${java.class.path};${basedir};${basedir}/../../out/production/tij4"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
 
     <target depends="build" description="Compile and run" name="run">
-        <touch file="${basedir}/../../out/production/tij4/ch02object/failures"/>
+        <touch file="${classes}/ch02object/failures"/>
         <antcall target="HelloDate"/>
         <antcall target="ShowProperties"/>
-        <!--<delete file="failures"/>-->
     </target>
 
     <target description="delete all byproducts" name="clean">
-        <delete>
-            <fileset dir="${basedir}/../../out/production/tij4/ch02object" includes="**/*.class"/>
-            <fileset dir="${basedir}/../../out/production/tij4/ch02object" includes="**/*Output.txt"/>
-            <fileset dir="${basedir}/../../out/production/tij4/ch02object" includes="**/log.txt"/>
-            <fileset dir="${basedir}/../../out/production/tij4/ch02object" includes="failures"/>
-            <fileset dir="${basedir}/../../out/production/tij4/ch02object" includes="build.xml"/>
-            <dirset dir="${basedir}/../../out/production/tij4/ch02object"/>
+        <delete verbose="true" includeemptydirs="true">
+            <fileset dir="${classes}">
+                <include name="**/*"/>
+            </fileset>
         </delete>
         <echo message="clean successful"/>
     </target>

@@ -2,13 +2,16 @@
 
 <project basedir="." default="run" name="ch12exceptions">
 
+    <property name="project" value="${basedir}/../../../../"/>
+    <property name="classes" value="${project}/target/classes"/>
+
     <condition property="version1.8">
         <equals arg1="1.8" arg2="${ant.java.version}"/>
     </condition>
 
     <target name="commons_util">
         <javac
-                destdir="${basedir}/../../out/production/tij4"
+                destdir="${classes}"
                 srcdir="${basedir}/../commons/util">
             <compilerarg value="-Xmaxerrs"/>
             <compilerarg value="10"/>
@@ -22,7 +25,7 @@
         <fail message="J2SE8 required" unless="version1.8"/>
         <echo message="Building 'exceptions'"/>
         <javac
-                destdir="${basedir}/../../out/production/tij4"
+                destdir="${classes}"
                 debug="true"
                 srcdir="${basedir}">
             <compilerarg value="-Xmaxerrs"/>
@@ -34,7 +37,7 @@
     <target name="AlwaysFinally">
         <java
                 classname="ch12exceptions.D15_AlwaysFinally"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -42,7 +45,7 @@
     <target name="Cleanup">
         <java
                 classname="ch12exceptions.D21_Cleanup"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -50,7 +53,7 @@
     <target name="CleanupIdiom">
         <java
                 classname="ch12exceptions.D22_CleanupIdiom"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -58,7 +61,7 @@
     <target name="DynamicFields">
         <java
                 classname="ch12exceptions.D10_DynamicFields"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -66,7 +69,7 @@
     <target name="ExceptionMethods">
         <java
                 classname="ch12exceptions.D06_ExceptionMethods"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -74,7 +77,7 @@
     <target name="ExceptionSilencer">
         <java
                 classname="ch12exceptions.D18_ExceptionSilencer"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -82,7 +85,7 @@
     <target name="ExtraFeatures">
         <java
                 classname="ch12exceptions.D05_ExtraFeatures"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -90,7 +93,7 @@
     <target name="FinallyWorks">
         <java
                 classname="ch12exceptions.D12_FinallyWorks"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -98,7 +101,7 @@
     <target name="FullConstructors">
         <java
                 classname="ch12exceptions.D02_FullConstructors"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -106,7 +109,7 @@
     <target name="Human">
         <java
                 classname="ch12exceptions.D23_Human"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -114,7 +117,7 @@
     <target name="InheritingExceptions">
         <java
                 classname="ch12exceptions.D01_InheritingExceptions"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -122,7 +125,7 @@
     <target name="LoggingExceptions">
         <java
                 classname="ch12exceptions.D03_LoggingExceptions"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -130,7 +133,7 @@
     <target name="LoggingExceptions2">
         <java
                 classname="ch12exceptions.D04_LoggingExceptions2"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -138,7 +141,7 @@
     <target name="LostMessage">
         <java
                 classname="ch12exceptions.D17_LostMessage"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -146,7 +149,7 @@
     <target name="MainException">
         <java
                 classname="ch12exceptions.D24_MainException"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -154,7 +157,7 @@
     <target name="MultipleReturns">
         <java
                 classname="ch12exceptions.D16_MultipleReturns"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -162,7 +165,7 @@
     <target name="NeverCaught">
         <java
                 classname="ch12exceptions.D11_NeverCaught"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="false"
                 fork="true"/>
         <echo message="* Exception was expected *"/>
@@ -171,7 +174,7 @@
     <target name="OnOffSwitch">
         <java
                 classname="ch12exceptions.D13_OnOffSwitch"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -179,7 +182,7 @@
     <target name="Rethrowing">
         <java
                 classname="ch12exceptions.D08_Rethrowing"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -187,7 +190,7 @@
     <target name="RethrowNew">
         <java
                 classname="ch12exceptions.D09_RethrowNew"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -195,7 +198,7 @@
     <target name="StormyInning">
         <java
                 classname="ch12exceptions.D19_StormyInning"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -203,7 +206,7 @@
     <target name="TurnOffChecking">
         <java
                 classname="ch12exceptions.D25_TurnOffChecking"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -211,7 +214,7 @@
     <target name="WhoCalled">
         <java
                 classname="ch12exceptions.D07_WhoCalled"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -219,7 +222,7 @@
     <target name="WithFinally">
         <java
                 classname="ch12exceptions.D14_WithFinally"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -228,7 +231,7 @@
             depends="build"
             description="Compile and run"
             name="run">
-        <touch file="${basedir}/../../out/production/tij4/ch12exceptions/failures"/>
+        <touch file="${classes}/ch12exceptions/failures"/>
         <antcall target="AlwaysFinally"/>
         <antcall target="Cleanup"/>
         <antcall target="CleanupIdiom"/>
@@ -243,9 +246,7 @@
         <antcall target="LoggingExceptions"/>
         <antcall target="LoggingExceptions2"/>
         <antcall target="LostMessage"/>
-        <!--
         <antcall target="MainException"/>
-        -->
         <antcall target="MultipleReturns"/>
         <antcall target="NeverCaught"/>
         <antcall target="OnOffSwitch"/>
@@ -255,17 +256,13 @@
         <antcall target="TurnOffChecking"/>
         <antcall target="WhoCalled"/>
         <antcall target="WithFinally"/>
-        <!--<delete file="failures"/>-->
     </target>
 
     <target description="delete all byproducts" name="clean">
-        <delete>
-            <fileset dir="${basedir}/../../out/production/tij4/ch12exceptions" includes="**/*.class"/>
-            <fileset dir="${basedir}/../../out/production/tij4/ch12exceptions" includes="**/*Output.txt"/>
-            <fileset dir="${basedir}/../../out/production/tij4/ch12exceptions" includes="**/log.txt"/>
-            <fileset dir="${basedir}/../../out/production/tij4/ch12exceptions" includes="failures"/>
-            <fileset dir="${basedir}/../../out/production/tij4/ch12exceptions" includes="build.xml"/>
-            <dirset dir="${basedir}/../../out/production/tij4/ch12exceptions"/>
+        <delete verbose="true" includeemptydirs="true">
+            <fileset dir="${classes}">
+                <include name="**/*"/>
+            </fileset>
         </delete>
         <echo message="clean successful"/>
     </target>

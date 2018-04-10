@@ -1,6 +1,21 @@
 <?xml version="1.0" ?>
 
-<project basedir="." default="run" name="ch20annotations">
+<project basedir="." default="run" name="ch20annotations" xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+
+    <property name="project" value="${basedir}/../../../../"/>
+    <property name="classes" value="${project}/target/classes"/>
+    <property name="maven-ant-task"
+              value="C:\Users\Administrator\.m2\repository\org\apache\maven\maven-ant-tasks\2.1.3\maven-ant-tasks-2.1.3.jar"/>
+
+    <!--ant引用maven依赖，通过maven-ant-task实现-->
+    <path id="maven-ant-tasks.classpath" path="${maven-ant-task}"/>
+
+    <typedef resource="org/apache/maven/artifact/ant/antlib.xml" uri="antlib:org.apache.maven.artifact.ant"
+             classpathref="maven-ant-tasks.classpath"/>
+
+    <artifact:dependencies filesetId="mavenlib" pathId="mavenclasspath" useScope="runtime">
+        <pom file="${project}/pom.xml"/>
+    </artifact:dependencies>
 
     <condition property="version1.8">
         <equals arg1="1.8" arg2="${ant.java.version}"/>
@@ -8,7 +23,7 @@
 
     <target name="commons_util">
         <javac
-                destdir="${basedir}/../../out/production/tij4"
+                destdir="${classes}"
                 srcdir="${basedir}/../commons/util">
             <compilerarg value="-Xmaxerrs"/>
             <compilerarg value="10"/>
@@ -17,8 +32,8 @@
 
     <target name="commons_atunit">
         <javac
-                classpath="${basedir}/..:${basedir}/../../lib/javassist.jar"
-                destdir="${basedir}/../../out/production/tij4"
+                classpathref="mavenclasspath"
+                destdir="${classes}"
                 srcdir="${basedir}/../commons/atunit/">
             <compilerarg value="-Xmaxerrs"/>
             <compilerarg value="10"/>
@@ -32,8 +47,8 @@
         <fail message="J2SE8 required" unless="version1.8"/>
         <echo message="Building 'annotations'"/>
         <javac
-                classpath="${basedir}/..:${basedir}/../../lib/apt-mirror-api-0.1.jar"
-                destdir="${basedir}/../../out/production/tij4"
+                destdir="${classes}"
+                classpathref="mavenclasspath"
                 debug="true"
                 srcdir="${basedir}">
             <compilerarg value="-Xmaxerrs"/>
@@ -45,8 +60,7 @@
     <target name="AtUnitComposition">
         <java
                 classname="ch20annotations.D14_AtUnitComposition"
-                classpath="${basedir}/../../out/production/tij4"
-                dir="../../"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -54,8 +68,7 @@
     <target name="AtUnitExample1">
         <java
                 classname="ch20annotations.D12_AtUnitExample1"
-                classpath="${basedir}/../../out/production/tij4"
-                dir="../../"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -63,8 +76,7 @@
     <target name="AtUnitExample2">
         <java
                 classname="ch20annotations.D15_AtUnitExample2"
-                classpath="${basedir}/../../out/production/tij4"
-                dir="../../"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -72,8 +84,7 @@
     <target name="AtUnitExample3">
         <java
                 classname="ch20annotations.D17_AtUnitExample3"
-                classpath="${basedir}/../../out/production/tij4"
-                dir="../../"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -81,8 +92,7 @@
     <target name="AtUnitExample4">
         <java
                 classname="ch20annotations.D18_AtUnitExample4"
-                classpath="${basedir}/../../out/production/tij4"
-                dir="../../"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -90,8 +100,7 @@
     <target name="AtUnitExample5">
         <java
                 classname="ch20annotations.D19_AtUnitExample5"
-                classpath="${basedir}/../../out/production/tij4"
-                dir="../../"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -99,8 +108,7 @@
     <target name="AtUnitExternalTest">
         <java
                 classname="ch20annotations.D13_AtUnitExternalTest"
-                classpath="${basedir}/../../out/production/tij4"
-                dir="../../"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -108,8 +116,7 @@
     <target name="HashSetTest">
         <java
                 classname="ch20annotations.D16_HashSetTest"
-                classpath="${basedir}/../../out/production/tij4"
-                dir="../../"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -117,8 +124,7 @@
     <target name="Multiplier">
         <java
                 classname="ch20annotations.D08_Multiplier"
-                classpath="${basedir}/../../out/production/tij4"
-                dir="../../"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -126,8 +132,7 @@
     <target name="StackLStringTest">
         <java
                 classname="ch20annotations.D20_StackLStringTest"
-                classpath="${basedir}/../../out/production/tij4"
-                dir="../../"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -135,8 +140,7 @@
     <target name="UseCaseTracker">
         <java
                 classname="ch20annotations.D04_UseCaseTracker"
-                classpath="${basedir}/../../out/production/tij4"
-                dir="../../"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -144,8 +148,7 @@
     <target name="TableCreator">
         <java
                 classname="ch20annotations.database.D06_TableCreator"
-                classpath="${basedir}/../../out/production/tij4"
-                dir="../../"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true">
             <arg line="ch20annotations.database.Member"/>
@@ -178,7 +181,7 @@
             depends="build"
             description="Compile and run"
             name="run">
-        <touch file="${basedir}/../../out/production/tij4/ch20annotations/failures"/>
+        <touch file="${classes}/ch20annotations/failures"/>
         <antcall target="AtUnitComposition"/>
         <antcall target="AtUnitExample1"/>
         <antcall target="AtUnitExample2"/>
@@ -195,14 +198,15 @@
         <antcall target="InterfaceExtractorProcessor"/>
         <antcall target="TableCreationProcessorFactory"/>
         -->
-        <!--<delete file="failures"/>-->
     </target>
 
     <target description="delete all byproducts" name="clean">
-        <delete dir="${basedir}/../../out/production/tij4/ch20annotations"/>
+        <delete verbose="true" includeemptydirs="true">
+            <fileset dir="${classes}">
+                <include name="**/*"/>
+            </fileset>
+        </delete>
         <echo message="clean successful"/>
     </target>
 
 </project>
-
-

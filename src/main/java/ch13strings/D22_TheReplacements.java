@@ -26,7 +26,7 @@ import static commons.util.Print.*;
  */
 public class D22_TheReplacements {
 	public static void main(String[] args) throws Exception {
-		String s = TextFile.read("src/ch13strings/D22_TheReplacements.java");
+		String s = TextFile.read("src/main/java/ch13strings/D22_TheReplacements.java");
 		// Match the specially commented block of text above:
 		Matcher mInput = Pattern.compile("/\\*!(.*)!\\*/", Pattern.DOTALL).matcher(s);
 		if (mInput.find())

@@ -2,6 +2,8 @@
 
 <project basedir="." default="run" name="ch11holding">
 
+    <property name="project" value="${basedir}/../../../../"/>
+    <property name="classes" value="${project}/target/classes"/>
 
     <condition property="version1.8">
         <equals arg1="1.8" arg2="${ant.java.version}"/>
@@ -9,7 +11,7 @@
 
     <target name="typeinfo_pets">
         <javac
-                destdir="${basedir}/../../out/production/tij4"
+                destdir="${classes}"
                 srcdir="${basedir}/../ch14typeinfo/pets/">
             <compilerarg value="-Xmaxerrs"/>
             <compilerarg value="10"/>
@@ -18,7 +20,7 @@
 
     <target name="commons_util">
         <javac
-                destdir="${basedir}/../../out/production/tij4"
+                destdir="${classes}"
                 srcdir="${basedir}/../commons/util">
             <compilerarg value="-Xmaxerrs"/>
             <compilerarg value="10"/>
@@ -32,7 +34,7 @@
         <fail message="J2SE8 required" unless="version1.8"/>
         <echo message="Building 'ch11holding'"/>
         <javac
-                destdir="${basedir}/../../out/production/tij4"
+                destdir="${classes}"
                 debug="true"
                 srcdir="${basedir}">
             <exclude name="exercise/**/*.java"/>
@@ -45,7 +47,7 @@
     <target name="AdapterMethodIdiom">
         <java
                 classname="ch11holding.D32_AdapterMethodIdiom"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -53,7 +55,7 @@
     <target name="AddingGroups">
         <java
                 classname="ch11holding.D05_AddingGroups"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -61,7 +63,7 @@
     <target name="ApplesAndOrangesWithGenerics">
         <java
                 classname="ch11holding.D02_ApplesAndOrangesWithGenerics"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -69,7 +71,7 @@
     <target name="ApplesAndOrangesWithoutGenerics">
         <java
                 classname="ch11holding.D01_ApplesAndOrangesWithoutGenerics"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="false"
                 fork="true"/>
         <echo message="* Exception was expected *"/>
@@ -78,7 +80,7 @@
     <target name="ArrayIsNotIterable">
         <java
                 classname="ch11holding.D31_ArrayIsNotIterable"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -86,7 +88,7 @@
     <target name="AsListInference">
         <java
                 classname="ch11holding.D06_AsListInference"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -94,7 +96,7 @@
     <target name="CollectionSequence">
         <java
                 classname="ch11holding.D26_CollectionSequence"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -102,7 +104,7 @@
     <target name="ContainerMethods">
         <java
                 classname="ch11holding.D35_ContainerMethods"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -110,7 +112,7 @@
     <target name="CrossContainerIteration">
         <java
                 classname="ch11holding.D10_CrossContainerIteration"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -118,7 +120,7 @@
     <target name="EnvironmentVariables">
         <java
                 classname="ch11holding.D30_EnvironmentVariables"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -126,7 +128,7 @@
     <target name="ForEachCollections">
         <java
                 classname="ch11holding.D28_ForEachCollections"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -134,7 +136,7 @@
     <target name="GenericsAndUpcasting">
         <java
                 classname="ch11holding.D03_GenericsAndUpcasting"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -142,7 +144,7 @@
     <target name="InterfaceVsIterator">
         <java
                 classname="ch11holding.D25_InterfaceVsIterator"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -150,7 +152,7 @@
     <target name="IterableClass">
         <java
                 classname="ch11holding.D29_IterableClass"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -158,7 +160,7 @@
     <target name="LinkedListFeatures">
         <java
                 classname="ch11holding.D12_LinkedListFeatures"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -166,7 +168,7 @@
     <target name="ListFeatures">
         <java
                 classname="ch11holding.D08_ListFeatures"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -174,7 +176,7 @@
     <target name="ListIteration">
         <java
                 classname="ch11holding.D11_ListIteration"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -182,7 +184,7 @@
     <target name="MapOfList">
         <java
                 classname="ch11holding.D22_MapOfList"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -190,7 +192,7 @@
     <target name="ModifyingArraysAsList">
         <java
                 classname="ch11holding.D34_ModifyingArraysAsList"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -198,7 +200,7 @@
     <target name="MultiIterableClass">
         <java
                 classname="ch11holding.D33_MultiIterableClass"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -206,7 +208,7 @@
     <target name="NonCollectionSequence">
         <java
                 classname="ch11holding.D27_NonCollectionSequence"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -214,7 +216,7 @@
     <target name="PetMap">
         <java
                 classname="ch11holding.D21_PetMap"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -222,7 +224,7 @@
     <target name="PrintingContainers">
         <java
                 classname="ch11holding.D07_PrintingContainers"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -230,7 +232,7 @@
     <target name="PriorityQueueDemo">
         <java
                 classname="ch11holding.D24_PriorityQueueDemo"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -238,7 +240,7 @@
     <target name="QueueDemo">
         <java
                 classname="ch11holding.D23_QueueDemo"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -246,7 +248,7 @@
     <target name="SetOfInteger">
         <java
                 classname="ch11holding.D15_SetOfInteger"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -254,7 +256,7 @@
     <target name="SetOperations">
         <java
                 classname="ch11holding.D17_SetOperations"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -262,7 +264,7 @@
     <target name="SimpleCollection">
         <java
                 classname="ch11holding.D04_SimpleCollection"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -270,7 +272,7 @@
     <target name="SimpleIteration">
         <java
                 classname="ch11holding.D09_SimpleIteration"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -278,7 +280,7 @@
     <target name="SortedSetOfInteger">
         <java
                 classname="ch11holding.D16_SortedSetOfInteger"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -286,7 +288,7 @@
     <target name="StackCollision">
         <java
                 classname="ch11holding.D14_StackCollision"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -294,7 +296,7 @@
     <target name="StackTest">
         <java
                 classname="ch11holding.D13_StackTest"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -302,7 +304,7 @@
     <target name="Statistics">
         <java
                 classname="ch11holding.D20_Statistics"
-                dir="../../out/production/tij4"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -310,8 +312,8 @@
     <target name="UniqueWords">
         <java
                 classname="ch11holding.D18_UniqueWords"
-                classpath="${java.class.path};${basedir};${basedir}/../../out/production/tij4"
-                dir="../../"
+                classpath="${classes}"
+                dir="${project}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -319,8 +321,7 @@
     <target name="UniqueWordsAlphabetic">
         <java
                 classname="ch11holding.D19_UniqueWordsAlphabetic"
-                classpath="${java.class.path};${basedir};${basedir}/../../out/production/tij4"
-                dir="${basedir}"
+                classpath="${classes}"
                 failonerror="true"
                 fork="true"/>
     </target>
@@ -329,7 +330,7 @@
             depends="build"
             description="Compile and run"
             name="run">
-        <touch file="${basedir}/../../out/production/tij4/ch11holding/failures"/>
+        <touch file="${classes}/ch11holding/failures"/>
         <antcall target="AdapterMethodIdiom"/>
         <antcall target="AddingGroups"/>
         <antcall target="ApplesAndOrangesWithGenerics"/>
@@ -365,17 +366,13 @@
         <antcall target="Statistics"/>
         <antcall target="UniqueWords"/>
         <antcall target="UniqueWordsAlphabetic"/>
-        <!--<delete file="failures"/>-->
     </target>
 
     <target description="delete all byproducts" name="clean">
-        <delete>
-            <fileset dir="${basedir}/../../out/production/tij4/ch11holding" includes="**/*.class"/>
-            <fileset dir="${basedir}/../../out/production/tij4/ch11holding" includes="**/*Output.txt"/>
-            <fileset dir="${basedir}/../../out/production/tij4/ch11holding" includes="**/log.txt"/>
-            <fileset dir="${basedir}/../../out/production/tij4/ch11holding" includes="failures"/>
-            <fileset dir="${basedir}/../../out/production/tij4/ch11holding" includes="build.xml"/>
-            <dirset dir="${basedir}/../../out/production/tij4/ch11holding"/>
+        <delete verbose="true" includeemptydirs="true">
+            <fileset dir="${classes}">
+                <include name="**/*"/>
+            </fileset>
         </delete>
         <echo message="clean successful"/>
     </target>
